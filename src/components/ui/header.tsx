@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import LogoIcon from '../icons/logo';
+import Image from 'next/image';
 
 const NAV_LINKS = [
     { label: 'Home', href: '/' },
@@ -16,175 +16,146 @@ export default function Header() {
     return (
         <>
             <style>{`
-                /* ── Dropdown slide-down only ── */
-                .mobile-dropdown {
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    overflow: hidden;
-                    transform-origin: top center;
-                    transform: scaleY(0.92) translateY(-8px);
+                .sidebar {
+                    position: fixed;
+                    top: 0; left: 0;
+                    height: 100vh;
+                    width: 272px;
+                    background: #000;
+                    z-index: 100;
+                    transform: translateX(-100%);
+                    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+                    display: flex;
+                    flex-direction: column;
+                    padding: 32px 24px 32px;
+                    border-right: 1px solid rgba(255,255,255,0.08);
+                }
+                .sidebar.open {
+                    transform: translateX(0);
+                }
+                .sidebar-overlay {
+                    position: fixed;
+                    inset: 0;
+                    background: rgba(0,0,0,0.5);
+                    z-index: 99;
                     opacity: 0;
                     pointer-events: none;
-                    transition:
-                        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                        opacity 0.25s ease;
-                    z-index: 40;
+                    transition: opacity 0.3s ease;
                 }
-                .mobile-dropdown.open {
-                    transform: scaleY(1) translateY(0);
+                .sidebar-overlay.open {
                     opacity: 1;
                     pointer-events: auto;
                 }
-
-                /* ── Staggered items ── */
-                .mobile-nav-item {
-                    opacity: 0;
-                    transform: translateX(-10px);
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                }
-                .mobile-dropdown.open .mobile-nav-item:nth-child(1) { opacity:1; transform:none; transition-delay: 0.06s; }
-                .mobile-dropdown.open .mobile-nav-item:nth-child(2) { opacity:1; transform:none; transition-delay: 0.11s; }
-                .mobile-dropdown.open .mobile-nav-item:nth-child(3) { opacity:1; transform:none; transition-delay: 0.16s; }
-                .mobile-dropdown.open .mobile-nav-item:nth-child(4) { opacity:1; transform:none; transition-delay: 0.21s; }
-                .mobile-dropdown.open .mobile-nav-item:nth-child(5) { opacity:1; transform:none; transition-delay: 0.26s; }
-                .mobile-dropdown.open .mobile-nav-item:nth-child(6) { opacity:1; transform:none; transition-delay: 0.31s; }
-
-                /* ── Hamburger ── */
-                .hamburger-line {
+                .sidebar-link {
                     display: block;
-                    width: 22px;
-                    height: 1.5px;
-                    background: white;
-                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-                    transform-origin: center;
-                }
-                .hamburger-line:nth-child(2) { margin: 5px 0; }
-                .hamburger.open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-                .hamburger.open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
-                .hamburger.open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-                /* ── Desktop nav underline ── */
-                .nav-link {
-                    position: relative;
-                    font-size: 0.8125rem;
+                    padding: 12px 0;
+                    font-size: 1rem;
                     font-weight: 400;
-                    color: #d1d5db;
-                    letter-spacing: 0.01em;
-                    transition: color 0.2s ease;
+                    color: #b0b3b8;
                     text-decoration: none;
+                    transition: color 0.2s ease;
+                    border-bottom: 1px solid transparent;
                 }
-                .nav-link::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -2px; left: 0;
-                    width: 0; height: 1px;
-                    background: white;
-                    transition: width 0.25s ease;
-                }
-                .nav-link:hover { color: white; }
-                .nav-link:hover::after { width: 100%; }
-
-                /* ── Mobile row hover ── */
-                .mobile-row {
+                .sidebar-link:hover { color: #fff; }
+                .sidebar-link.active { color: #fff; font-weight: 600; }
+                .sidebar-bottom-link {
                     display: flex;
                     align-items: center;
-                    gap: 12px;
-                    padding: 14px 20px;
-                    border-radius: 10px;
-                    color: #b0b3b8;
-                    font-size: 1rem;
-                    font-weight: 400;
+                    gap: 10px;
+                    color: #888;
+                    font-size: 0.875rem;
                     text-decoration: none;
-                    letter-spacing: 0.01em;
-                    transition: background 0.18s ease, color 0.18s ease, padding-left 0.2s ease;
+                    transition: color 0.2s ease;
                 }
-                .mobile-row:hover {
-                    background: rgba(255,255,255,0.06);
-                    color: #ffffff;
-                    padding-left: 26px;
+                .sidebar-bottom-link:hover { color: #fff; }
+                .hamburger-line {
+                    display: block;
+                    width: 20px;
+                    height: 1.5px;
+                    background: white;
+                    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.2s ease;
+                    transform-origin: center;
                 }
-                .mobile-row.contact {
-                    color: #ffffff;
-                    font-weight: 600;
-                    font-size: 1rem;
-                    letter-spacing: 0.03em;
-                }
-                .mobile-row.contact:hover {
-                    background: rgba(255,255,255,0.08);
-                }
+                .hamburger-line:nth-child(2) { margin: 4px 0; }
             `}</style>
 
-            {/* header must be relative so the dropdown can use position:absolute top:100% */}
-            <header className="sticky p-2 top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-white/5">
+            {/* Sidebar overlay */}
+            <div
+                className={`sidebar-overlay ${isMenuOpen ? 'open' : ''}`}
+                onClick={() => setIsMenuOpen(false)}
+            />
 
-                {/* ── Navbar ── */}
-                <nav className="mx-auto flex h-17 max-w-7xl items-center justify-between px-6 lg:px-10">
-
-                    {/* Logo */}
-                    <div className="shrink-0 flex h-10 w-10 items-center justify-center">
-                        <LogoIcon className="h-full w-full object-contain" />
-                    </div>
-
-                    {/* Desktop links — absolutely centered */}
-                    <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-                        {NAV_LINKS.map(({ label, href }) => (
-                            <a key={label} href={href} className="nav-link">{label}</a>
-                        ))}
-                    </div>
-
-                    {/* Desktop CTA */}
-                    <div className="hidden md:block shrink-0">
-                        <a href="#contact" className="text-sm font-bold text-white tracking-wide transition-opacity hover:opacity-60" style={{ letterSpacing: '0.02em' }}>
-                            Contact Us
-                        </a>
-                    </div>
-
-                    {/* Hamburger — Mobile */}
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className={`hamburger ${isMenuOpen ? 'open' : ''} p-2 md:hidden flex flex-col justify-center`}
-                        aria-label="Toggle menu"
-                    >
-                        <span className="hamburger-line" />
-                        <span className="hamburger-line" />
-                        <span className="hamburger-line" />
-                    </button>
-                </nav>
-
-                {/* ── Mobile dropdown — slides DOWN from navbar bottom ── */}
-                <div className={`mobile-dropdown ${isMenuOpen ? 'open' : ''} md:hidden bg-black border-t border-white/8 shadow-2xl`}>
-                    <div className="px-4 pt-3 pb-5">
-
-                        {/* Nav links */}
-                        <div className="flex flex-col gap-1">
-                            {NAV_LINKS.map(({ label, href }) => (
-                                <a
-                                    key={label}
-                                    href={href}
-                                    className="mobile-nav-item mobile-row"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {label}
-                                </a>
-                            ))}
-                        </div>
-
-                        {/* Divider */}
-                        <div className="mobile-nav-item my-3 border-t border-white/10" />
-
-                        {/* Contact Us */}
-                        <a
-                            href="#contact"
-                            className="mobile-nav-item mobile-row contact"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            Contact Us
-                        </a>
-                    </div>
+            {/* Sidebar */}
+            <aside className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
+                {/* Sidebar logo */}
+                <div className="mb-8">
+                    <Image src="/images/escape.png" alt="escape" width={80} height={24} className="object-contain" />
                 </div>
 
+                {/* Nav links */}
+                <nav className="flex flex-col gap-1 flex-1">
+                    {NAV_LINKS.map(({ label, href }, i) => (
+                        <a
+                            key={label}
+                            href={href}
+                            className={`sidebar-link ${i === 0 ? 'active' : ''}`}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {label}
+                        </a>
+                    ))}
+                </nav>
+
+                {/* Bottom links */}
+                <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
+                    <a href="#support" className="sidebar-bottom-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/>
+                        </svg>
+                        Support
+                    </a>
+                    <a href="#settings" className="sidebar-bottom-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                        Settings
+                    </a>
+                </div>
+            </aside>
+
+            {/* Header bar */}
+            <header className="sticky top-0 left-0 right-0 z-50 bg-transparrent border-b border-white/5">
+                <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
+
+                    {/* Left: Store button */}
+                    <div className="flex items-center gap-4">
+                        <a
+                            href="#store"
+                            className="rounded-lg border border-white/60 px-4 py-2 text-xs font-semibold tracking-widest text-white transition-all hover:bg-white hover:text-black"
+                        >
+                            STORE
+                        </a>
+                    </div>
+
+                    {/* Center: Logo */}
+                    <div className="absolute left-1/2 -translate-x-1/2">
+                        <Image src="/images/escape.png" alt="escape" width={100} height={28} className="object-contain" />
+                    </div>
+
+                    {/* Right: Menu toggle */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="flex items-center gap-2 text-sm font-medium text-white"
+                        aria-label="Toggle menu"
+                    >
+                        <span className="tracking-wide">Menu</span>
+                        <div className="flex flex-col justify-center">
+                            <span className="hamburger-line" />
+                            <span className="hamburger-line" />
+                            <span className="hamburger-line" />
+                        </div>
+                    </button>
+                </nav>
             </header>
         </>
     );
