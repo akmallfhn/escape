@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Sheepman";
+  src: url("/fonts/fonnts.com-Sheepman-Bold.otf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Grotesk Font Faces */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/Space_Grotesk/static/SpaceGrotesk-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@import "tailwindcss";
+
+:root {
+  --background: #101010;
+  --foreground: #fcfae1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --color-cream: #fcfae1;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  @apply font-space-grotesk;
+}
+
+.hero-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    118.96deg,
+    #fff 0%,
+    #777777 14%,
+    #fff 58%,
+    #555555 80%
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  padding: 2px;
+  border-radius: inherit;
+}
