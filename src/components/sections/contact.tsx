@@ -7,17 +7,17 @@ export default function ContactSection() {
                     <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
                         {/* Left Column - Text Content */}
                         <div className="max-w-2xl">
-                            <h2 className="mb-4 text-3xl leading-tight font-bold text-cream uppercase md:text-5xl lg:text-5xl">
+                            <h2 className="mb-4 text-3xl leading-tight font-normal text-white uppercase md:text-5xl lg:text-5xl">
                                 Have an interesting
                                 <br />
                                 question about
                                 <br />
-                                <span className="text-[#DA393C]">
+                                <span className="text-white">
                                     Collaboration?
                                 </span>
                             </h2>
 
-                            <p className="mb-8 text-base font-normal text-gray-300 md:text-sm">
+                            <p className="mb-8 text-base font-normal text-white md:text-sm">
                                 Buat kalian yang mau kolaborasi bareng kita,
                                 langsung aja
                                 <br />
@@ -34,7 +34,7 @@ export default function ContactSection() {
                             <Image
                                 src="/images/KartuLuar.png"
                                 alt=""
-                                className="w-full md:w-2/3  mx-auto"
+                                className="w-full md:w-2/3  ml-auto"
                                 width={400}
                                 height={400}
                             />
