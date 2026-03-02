@@ -62,7 +62,7 @@ export default function CollabSection() {
 
     return (
         <section className="bg-black py-12 sm:py-16 md:py-20 lg:py-24">
-            <div className=" max-w-7xl">
+            <div className="mx-auto w-full max-w-7xl">
 
                 {/* Section Title */}
                 <div className="mb-8 text-center sm:mb-10 md:mb-12">
@@ -80,7 +80,7 @@ export default function CollabSection() {
                 </div>
 
                 {/* Collaborators Grid — 3 rows x 7 cols */}
-                <div className="grid grid-cols-3 gap-2 px-10 sm:grid-cols-5 sm:gap-3 md:grid-cols-7 md:gap-3 lg:gap-8">
+                <div className="grid grid-cols-3 gap-2 px-6 sm:grid-cols-5 sm:gap-3 md:grid-cols-7 md:gap-3 lg:gap-8">
                     {collaborators.map((collab, index) => (
                         <div
                             key={index}
