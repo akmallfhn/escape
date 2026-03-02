@@ -1,0 +1,40 @@
+import CollabSection from "@/components/sections/collabs";
+import ContactSection from "@/components/sections/contact";
+import Hero from "@/components/sections/hero";
+import Footer from "@/components/ui/footer";
+import Header from "@/components/ui/header";
+import LogoScroll from "@/components/ui/logo-stripe";
+import EventDetailSection from "@/components/sections/event-details";
+import Escape2Section from "@/components/sections/escape-2";
+import MerchandiseSection from "@/components/sections/merchandise";
+
+
+
+
+// Reusable Infinite Scroll Component
+
+export default function Landing() {
+  return (
+    <div className="bg-black text-white overflow-hidden">      
+
+      <Hero />
+
+      <EventDetailSection /> 
+
+      <LogoScroll />
+
+      <Escape2Section /> 
+
+      <CollabSection />
+
+      <LogoScroll />
+
+      <MerchandiseSection />
+
+      <ContactSection />
+
+      <LogoScroll />
+
+    </div>
+  );
+}
