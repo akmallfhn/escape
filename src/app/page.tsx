@@ -15,7 +15,7 @@ import MerchandiseSection from "@/components/sections/merchandise";
 
 export default function Landing() {
   return (
-    <div className="bg-black text-white overflow-hidden">      
+    <div className="bg-black text-white">      
 
       <Hero />
 
