@@ -3,15 +3,18 @@ import Image from "next/image";
 export default function HeroVideo() {
     return (
         <section className="relative w-full overflow-hidden bg-black h-[75vh] sm:h-[80vh] md:[aspect-ratio:16/9] md:h-auto">
-            {/* background video */}
-            <video
+           <video
                 className="absolute inset-0 h-full w-full object-cover"
-                src="/videos/teaser.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-            />
+            >
+                <source
+                    src="https://res.cloudinary.com/djylg2vjv/video/upload/teaser_mhhesl.mp4"
+                    type="video/mp4"
+                />
+            </video>
 
             {/* dark overlay */}
             <div className="absolute inset-0 bg-black/40" />
