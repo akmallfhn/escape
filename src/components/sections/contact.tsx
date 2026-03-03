@@ -34,7 +34,7 @@ export default function ContactSection() {
                             <Image
                                 src="/images/KartuLuar.png"
                                 alt=""
-                                className="w-full md:w-2/3  ml-auto"
+                                className="w-full md:w-2/3  lg:ml-auto"
                                 width={400}
                                 height={400}
                             />

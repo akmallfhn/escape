@@ -2,7 +2,7 @@ import Escape from "../icons/escape";
 
 export default function Footer() {
   return (
-    <footer className="bg-black px-3 lg:mx24 py-12 md:py-16">
+    <footer className="bg-black px-8 lg:px-18 py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* ── MOBILE + TABLET layout (hidden on lg+) ── */}
         <div className="lg:hidden">
@@ -141,7 +141,7 @@ export default function Footer() {
         </div>
 
         {/* ── DESKTOP layout (hidden below lg) ── */}
-        <div className="hidden lg:flex lg:flex-row lg:gap-16 xl:gap-24">
+        <div className="hidden lg:flex lg:flex-row lg:gap-16 xl:gap-12">
           {/* LEFT: Logo + desc + socials */}
           <div className="w-72 xl:w-80 shrink-0 space-y-5">
             <div className="h-8 w-36">
