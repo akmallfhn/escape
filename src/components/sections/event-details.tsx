@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function EventDetailSection() {
     return (
-        <section className="bg-[#0a0a0a] py-16 md:py-20 lg:py-24">
+        <section className="bg-black py-16 md:py-20 lg:py-24">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-20">
 

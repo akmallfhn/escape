@@ -17,7 +17,7 @@ const pastEvents: PastEventData[] = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
         date: "5 May 2025",
         audience: "1000+ Audience",
-        image: "/images/mdn.png",
+        image: "/images/medan.png",
     },
     {
         category: "Offline Podcast",
@@ -25,7 +25,7 @@ const pastEvents: PastEventData[] = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
         date: "11 Jan 2022",
         audience: "1000+ Audience",
-        image: "/images/bdg.png",
+        image: "/images/bandung.png",
     },
     {
         category: "Offline Podcast",
@@ -33,7 +33,7 @@ const pastEvents: PastEventData[] = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
         date: "11 Jan 2022",
         audience: "1000+ Audience",
-        image: "/images/jkt.png",
+        image: "/images/jakarta.png",
     },
 ];
 
@@ -47,7 +47,7 @@ function EventCard({ event }: { event: PastEventData }) {
                     width={600}
                     height={400}
                     
-                    className="w-full h-full object-fill"
+                    className="w-full h-full object-cover"
                     onError={(e) => {
                         (e.target as HTMLImageElement).style.display = "none";
                     }}

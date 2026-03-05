@@ -1,7 +1,7 @@
 export default function Escape({
   className,
-  width = "150",
-  height = "60",
+  width = "130",
+  height = "50",
   fill = "white",
   ...props
 }: React.SVGProps<SVGSVGElement>) {

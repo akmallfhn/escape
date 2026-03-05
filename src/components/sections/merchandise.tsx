@@ -96,7 +96,7 @@ export default function MerchandiseSection() {
                         Buy on Shopee
                     </a>
                     <a
-                        href="#"
+                        href="/merch"
                         className="inline-flex items-center justify-center rounded-lg border border-white/40 px-8 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:border-white hover:bg-white/5 active:scale-95 md:text-base"
                     >
                         View All Catalogue

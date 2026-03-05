@@ -44,7 +44,7 @@ export default function SpotifySection() {
                         {/* CTA */}
                         <div>
                             <a
-                                href="https://open.spotify.com"
+                                href="https://open.spotify.com/show/1sXjtHpEBqgAlb1ezODV91"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center rounded-lg bg-[#1DB954] px-8 py-4 text-sm font-bold text-black transition-all duration-200 hover:bg-[#17a349] active:scale-95"

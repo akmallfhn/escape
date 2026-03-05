@@ -27,19 +27,10 @@ export default function MerchCarousel() {
     const next = () => setCurrent((c) => (c + 1) % slides.length);
 
     return (
-        <section
-            className="relative w-full overflow-hidden bg-black select-none"
-            style={{ aspectRatio: "4/5" }}
-        >
-            <style>{`
-                @media (min-width: 640px) {
-                    .carousel-root { aspect-ratio: 16/9 !important; }
-                }
-            `}</style>
-
+        <section className="relative w-full h-screen overflow-hidden bg-black select-none">
             {/* Slides */}
             <div
-                className="carousel-root flex h-full transition-transform duration-500 ease-in-out"
+                className="flex h-full transition-transform duration-500 ease-in-out"
                 style={{
                     width: `${slides.length * 100}%`,
                     transform: `translateX(-${(current * 100) / slides.length}%)`,
@@ -58,10 +49,8 @@ export default function MerchCarousel() {
                             priority={i === 0}
                             className="object-cover object-center"
                         />
-                        {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
-                        {/* Text */}
                         <div className="absolute bottom-16 left-5 right-5 flex flex-col gap-1 sm:bottom-auto sm:top-10 sm:left-10 sm:right-auto md:top-12 md:left-12 lg:top-16 lg:left-16">
                             <h1 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
                                 {slide.title}

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import Escape from '../icons/escape';
 
 const NAV_LINKS = [
     { label: 'Home', href: '/' },
@@ -118,7 +119,7 @@ export default function Header() {
                     })}
                 </nav>
 
-                <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
+                {/* <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
                     <a href="#support" className="sidebar-bottom-link" onClick={close}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                             <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/>
@@ -131,24 +132,24 @@ export default function Header() {
                         </svg>
                         Settings
                     </a>
-                </div>
+                </div> */}
             </aside>
 
             {/* header bar */}
             <header className={`fixed top-0 left-0 right-0 z-50 border-b' : 'bg-transparent'}`}>
-                <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
+                <nav className="mx-auto flex flex-row-reverse h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
 
                     <div className="flex items-center gap-4">
                         <a
-                            href="#store"
-                            className="rounded-lg border border-white/60 px-4 py-2 text-xs font-semibold tracking-widest text-white transition-all hover:bg-white hover:text-black"
+                            href="/merchandise"
+                            className="rounded-lg border border-white/60 px-5 py-3 text-xs font-semibold tracking-widest text-white transition-all hover:bg-white hover:text-black"
                         >
-                            STORE
+                            OUR MERCH
                         </a>
                     </div>
 
                     <div className="absolute left-1/2 -translate-x-1/2">
-                        <Image src="/images/escape.png" alt="escape" width={100} height={28} className="object-contain" />
+                        <Escape />
                     </div>
 
                     <button
