@@ -24,15 +24,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  );
+  // Replace the return statement:
+return (
+  <html lang="en">
+    <head>
+      <link rel="preconnect" href="https://res.cloudinary.com" />
+      <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      <link rel="preconnect" href="https://www.youtube.com" />
+      <link rel="dns-prefetch" href="https://www.youtube.com" />
+    </head>
+    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <Header />
+      {children}
+      <Footer />
+    </body>
+  </html>
+);
 }

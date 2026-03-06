@@ -4,6 +4,7 @@ import PlaylistSection from "@/components/sections/playlist";
 import SpotifySection from "@/components/sections/spotify";
 import StreamSection from "@/components/sections/stream";
 import LogoScroll from "@/components/ui/logo-stripe";
+export const dynamic = 'force-static';
 
 export default function Offline() {
     return (

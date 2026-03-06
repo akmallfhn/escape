@@ -3,12 +3,13 @@ import Image from "next/image";
 export default function HeroVideo() {
     return (
         <section className="relative w-full overflow-hidden bg-black h-[75vh] sm:h-[80vh] md:[aspect-ratio:16/9] md:h-auto">
-           <video
+            <video
                 className="absolute inset-0 h-full w-full object-cover"
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="auto"
             >
                 <source
                     src="https://res.cloudinary.com/djylg2vjv/video/upload/teaser_mhhesl.mp4"
@@ -29,6 +30,7 @@ export default function HeroVideo() {
                     alt="Live Podcast Escape Room Makassar"
                     width={400}
                     height={200}
+                    priority
                     className="w-48 sm:w-64 md:w-80 lg:w-[400px] object-contain"
                 />
 

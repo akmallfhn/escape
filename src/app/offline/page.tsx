@@ -7,6 +7,7 @@ import SeatPlan from "@/components/sections/seat-plan";
 import TermsSection from "@/components/sections/terms";
 import Why from "@/components/sections/why";
 import LogoScroll from "@/components/ui/logo-stripe";
+export const dynamic = 'force-static';
 
 export default function Offline() {
     return (

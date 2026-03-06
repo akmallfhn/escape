@@ -5,7 +5,7 @@ import LogoScroll from "@/components/ui/logo-stripe";
 import EventDetailSection from "@/components/sections/event-details";
 import Escape2Section from "@/components/sections/escape-2";
 import MerchandiseSection from "@/components/sections/merchandise";
-
+export const dynamic = 'force-static';
 
 
 
