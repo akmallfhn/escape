@@ -13,7 +13,7 @@ export default function About() {
 
             <Visi />
 
-            <LogoScroll />
+            {/* <LogoScroll /> */}
 
             <History />
 
@@ -23,7 +23,7 @@ export default function About() {
             
             <MeetTalent />
 
-            <LogoScroll />
+            {/* <LogoScroll /> */}
 
         </div>
     )

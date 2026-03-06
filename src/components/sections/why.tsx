@@ -2,19 +2,19 @@ import Image from "next/image";
 
 const stats = [
     {
-        value: "50%",
-        heading: "Short heading goes here",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        value: "75%",
+        heading: "Lebih Fokus & Hadir",
+        description: "Setelah menjauh dari hiruk-pikuk layar, peserta melaporkan peningkatan kualitas kehadiran (mindfulness) dalam kehidupan sehari-hari.",
     },
     {
-        value: "50%",
-        heading: "Short heading goes here",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        value: "65%",
+        heading: "Melepas Beban Mental",
+        description: "Melalui sesi sharing dan workshop, sebagian besar peserta berhasil memproses kecemasan yang selama ini dipendam sendirian.",
     },
     {
-        value: "50%",
-        heading: "Short heading goes here",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        value: "100%",
+        heading: "Menemukan Support System",
+        description: "Sembilan dari sepuluh orang merasa tidak lagi sendirian dalam perjuangan batin mereka setelah bertemu komunitas ini.",
     },
 ];
 
@@ -27,10 +27,9 @@ export default function Why() {
                     <h2 className="mb-6 text-4xl font-black uppercase leading-tight tracking-wide sm:text-5xl">
                         Kenapa Harus Ikut Escape Offline?
                     </h2>
+                    <h3 className="mb-6 text-sm font-black uppercase leading-tight tracking-wide sm:text-base">SAATNYA 'LOG OFF' UNTUK KEMBALI 'LIVE'</h3>
                     <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        varius enim in eros elementum tristique. Duis cursus, mi quis viverra
-                        ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                       Dunia terlalu bising. Escape Offline hadir sebagai tombol 'pause' agar kamu bisa mendengar kembali suara hatimu yang paling dalam.
                     </p>
                 </div>
 

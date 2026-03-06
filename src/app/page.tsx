@@ -1,8 +1,6 @@
 import CollabSection from "@/components/sections/collabs";
 import ContactSection from "@/components/sections/contact";
 import Hero from "@/components/sections/hero";
-import Footer from "@/components/ui/footer";
-import Header from "@/components/ui/header";
 import LogoScroll from "@/components/ui/logo-stripe";
 import EventDetailSection from "@/components/sections/event-details";
 import Escape2Section from "@/components/sections/escape-2";
@@ -21,19 +19,19 @@ export default function Landing() {
 
       <EventDetailSection /> 
 
-      <LogoScroll />
+      {/* <LogoScroll /> */}
 
       <Escape2Section /> 
 
       <CollabSection />
 
-      <LogoScroll />
+      {/* <LogoScroll /> */}
 
       <MerchandiseSection />
 
       <ContactSection />
 
-      <LogoScroll />
+      {/* <LogoScroll /> */}
 
     </div>
   );

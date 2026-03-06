@@ -7,21 +7,24 @@ interface Product {
     image: string;
 }
 
-const products: Product[] = [
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-1.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-2.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-3.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-4.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-5.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-1.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-2.png" },
-    { name: "Product name", variant: "Variant", price: "Rp 189.000", image: "/images/merch/merc-3.png" },
+const vol2Products: Product[] = [
+    { name: "T-shirt Vol.2", variant: "T-shirt", price: "Rp 189.000", image: "/images/merch/merc-6.png" },
+    { name: "Gelas Escape", variant: "Merchandise", price: "Sold Out", image: "/images/merch/merc-12.png" },
+    { name: "Pouch Canvas", variant: "Merchandise", price: "Sold Out", image: "/images/merch/merc-8.png" },
+    { name: "Escape: Unlearning - Lanyard", variant: "Merchandise", price: "Sold Out", image: "/images/merch/merc-9.png" },
+    { name: "Sticker Escape Vol.2", variant: "Merchandise", price: "Sold Out", image: "/images/merch/merc-11.png" },
+];
+
+const vol1Products: Product[] = [
+    { name: "T-shirt Escape Vol.1", variant: "T-shirt", price: "Sold Out", image: "/images/merch/merc-10.png" },
+    { name: "Hoodie Escape Vol.1", variant: "Hoodie", price: "Sold Out", image: "/images/merch/merc-7.png" },
+    { name: "Escape Totebag Vol.1", variant: "Merchandise", price: "Rp 110.000", image: "/images/merch/merc-13.png" },
 ];
 
 function ProductCard({ product }: { product: Product }) {
     return (
         <div className="flex flex-col gap-3 group cursor-pointer">
-            <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center p-8 aspect-[4/5]">
+            <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center p-4 sm:p-8 aspect-[4/5]">
                 <Image
                     src={product.image}
                     alt={product.name}
@@ -39,40 +42,52 @@ function ProductCard({ product }: { product: Product }) {
     );
 }
 
-export default function ProductCollection({ title = "Escape Vol 2" }: { title?: string }) {
-    const row1 = products.slice(0, 3);
-    const row2 = products.slice(3, 5);
-    const row3 = products.slice(5, 8);
+export default function ProductCollection() {
+    const vol2Row1 = vol2Products.slice(0, 3);
+    const vol2Row2 = vol2Products.slice(3, 5);
 
     return (
         <section className="bg-black py-16 md:py-20 lg:py-24 px-6 lg:px-8">
             <div className="mx-auto max-w-7xl flex flex-col gap-4 md:gap-6">
 
+                {/* Escape Vol.2 */}
                 <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
-                    {title}
+                    Escape Vol.2
                 </h2>
 
-                {/* Row 1 — 3 cols */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                    {row1.map((product, i) => (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
+                    {vol2Row1.map((product, i) => (
                         <ProductCard key={i} product={product} />
                     ))}
                 </div>
 
-                {/* Row 2 — 2 cols */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                    {row2.map((product, i) => (
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
+                    {vol2Row2.map((product, i) => (
                         <ProductCard key={i} product={product} />
                     ))}
                 </div>
 
-                {/* Row 3 — 3 cols */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                    {row3.map((product, i) => (
+                {/* Escape Vol.1 */}
+                <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl mt-8 md:mt-12">
+                    Escape Vol.1
+                </h2>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
+                    {vol1Products.map((product, i) => (
                         <ProductCard key={i} product={product} />
                     ))}
                 </div>
+            </div>
 
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+                
+                <a    href="https://shopee.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#DA393C] px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-[#b52b2d] active:scale-95 md:text-base"
+                >
+                    Shop on Shopee
+                </a>
             </div>
         </section>
     );

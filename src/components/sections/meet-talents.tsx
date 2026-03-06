@@ -54,15 +54,15 @@ export default function MeetTalent() {
                     </p>
                 </div>
 
-                {/* Talent Grid — 2 columns, image left + text right */}
+                {/* Talent Grid */}
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:gap-x-16 lg:gap-y-20">
                     {talents.map((talent, index) => (
-                        <a
-                            key={index}
+                        
+                        <a    key={index}
                             href={talent.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group flex gap-6 items-start"
+                            className={`group flex gap-6 items-start ${index % 2 === 1 ? "flex-row-reverse md:flex-row" : ""}`}
                         >
                             {/* Photo */}
                             <div className="shrink-0 w-36 sm:w-44 md:w-40 lg:w-48 xl:w-52 overflow-hidden rounded-2xl aspect-square">
@@ -77,22 +77,15 @@ export default function MeetTalent() {
 
                             {/* Info */}
                             <div className="flex flex-col gap-3 pt-1">
-                                {/* Role Badge */}
                                 <span className="w-fit rounded-md bg-[#DA393C] px-3 py-1 text-xs font-medium text-white">
                                     {talent.role}
                                 </span>
-
-                                {/* Name */}
                                 <h3 className="text-xl font-bold text-white md:text-2xl">
                                     {talent.name}
                                 </h3>
-
-                                {/* Description */}
                                 <p className="text-sm leading-relaxed text-gray-400 md:text-sm">
                                     {talent.description}
                                 </p>
-
-                                {/* Instagram */}
                                 <p className="mt-1 text-sm font-semibold text-white">
                                     {talent.instagram} - {talent.followers}
                                 </p>

@@ -44,6 +44,19 @@
 }
 @import "tailwindcss";
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --color-cream: #fcfae1;
+  --animate-scroll-seamless: scroll-seamless 30s linear infinite;
+}
+
+@keyframes scroll-seamless {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 :root {
   --background: #101010;
   --foreground: #fcfae1;
@@ -63,6 +76,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   @apply font-space-grotesk;
+  
 }
 
 .hero-card {

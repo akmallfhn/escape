@@ -10,8 +10,8 @@ export default function Hero() {
                     <div className="relative z-10 flex h-full flex-col items-center justify-end lg:pb-6">
                         <div className="flex gap-4">
                             <a
-                                href="#ticket"
-                                className="rounded-lg border border-black bg-white px-6 py-2.5 text-sm font-semibold text-black transition-all hover:bg-gray-300 hover:text-black active:scale-95 sm:px-8 sm:py-3 sm:text-base"
+                                href="https://drsn.me/escapemakassar2026"
+                                className="rounded-lg border border-black bg-[#DA393C] px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#b52b2d] active:scale-95 sm:px-8 sm:py-3 sm:text-base"
                             >
                                 Buy Ticket
                             </a>

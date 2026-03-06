@@ -139,14 +139,7 @@ export default function Header() {
             <header className={`fixed top-0 left-0 right-0 z-50 border-b' : 'bg-transparent'}`}>
                 <nav className="mx-auto flex flex-row-reverse h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
 
-                    <div className="flex items-center gap-4">
-                        <a
-                            href="/merchandise"
-                            className="rounded-lg border border-white/60 px-5 py-3 text-xs font-semibold tracking-widest text-white transition-all hover:bg-white hover:text-black"
-                        >
-                            OUR MERCH
-                        </a>
-                    </div>
+                    
 
                     <div className="absolute left-1/2 -translate-x-1/2">
                         <Escape />

@@ -30,7 +30,7 @@ export default function Escape2Section() {
                     {/* CTAs */}
                     <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
                         <a
-                            href="https://www.youtube.com/watch?v=-HTgSYyIE-U"
+                            href="https://www.youtube.com/watch?v=mabIfukbmQg&list=PLSNt1tjjz_ArbAOmvUSXCAyUaksGy0lDs&pp=0gcJCbQEOCosWNin"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center rounded-lg bg-[#DA393C] px-7 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-200 hover:bg-[#b52b2d] active:scale-95 md:text-base"
@@ -38,7 +38,7 @@ export default function Escape2Section() {
                             Watch Escape 2.0
                         </a>
                         <a
-                            href="#"
+                            href="/online"
                             className="inline-flex items-center gap-1.5 text-sm font-medium text-white transition-opacity hover:opacity-70 md:text-base"
                         >
                             More Details

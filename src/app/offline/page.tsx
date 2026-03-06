@@ -15,12 +15,12 @@ export default function Offline() {
            <Why />
            <SeatPlan />
            <Cards />
-           <LogoScroll />
+           {/* <LogoScroll /> */}
            <PastEvents />
            <EventDetailSection />
            <TermsSection />
            <ContactSection />
-           <LogoScroll />
+           {/* <LogoScroll /> */}
 
         </div>
     )

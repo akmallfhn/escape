@@ -35,7 +35,7 @@ export default function HeroVideo() {
                 <div className="mt-4 flex gap-3 sm:gap-4">
                     <a
                         href="#ticket"
-                        className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-black transition-all hover:bg-gray-200 active:scale-95 sm:px-8 sm:py-3 sm:text-base"
+                        className="rounded-lg bg-[#DA393C] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#b52b2d] active:scale-95 sm:px-8 sm:py-3 sm:text-base"
                     >
                         Buy Ticket
                     </a>

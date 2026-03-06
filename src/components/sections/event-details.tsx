@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function EventDetailSection() {
     return (
-        <section className="bg-black py-16 md:py-20 lg:py-24">
+        <section id="detail" className="bg-black py-16 md:py-20 lg:py-24">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-20">
 
@@ -90,7 +90,7 @@ export default function EventDetailSection() {
                         {/* CTA Button */}
                         <div className="mt-2">
                             <a
-                                href="#"
+                                href="https://drsn.me/escapemakassar2026"
                                 className="inline-flex items-center justify-center rounded-xl bg-[#DA393C] px-10 py-4 text-sm font-bold tracking-widest text-white shadow-lg shadow-[#DA393C]/30 transition-all duration-200  hover:bg-[#b52b2d] active:scale-95 md:text-base"
                             >
                                 Buy Now!

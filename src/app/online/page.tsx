@@ -13,7 +13,7 @@ export default function Offline() {
           <SpotifySection />
           <StreamSection />
           <ContactSection />
-          <LogoScroll />
+          {/* <LogoScroll /> */}
 
         </div>
     )

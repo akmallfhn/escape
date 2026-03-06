@@ -7,7 +7,7 @@ const episodes = [
         duration: "17+ Hours",
         title: "ESCAPE SEASON 2 (2026)",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
-        href: "https://youtu.be/-HTgSYyIE-U?si=6ZjBCHWOCSFb_2Bu",
+        href: "https://www.youtube.com/playlist?list=PLSNt1tjjz_ArbAOmvUSXCAyUaksGy0lDs",
     },
     {
         image: "/images/playlist/pl-2.png",
@@ -23,7 +23,7 @@ const episodes = [
         duration: "300+ min",
         title: "ESCAPE MEDAN",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
-        href: "#",
+        href: "https://youtu.be/HeU0S4LOaWs?si=t5p4oLWfs5OYGD93",
     },
     {
         image: "/images/playlist/pl-4.png",
@@ -47,7 +47,7 @@ const episodes = [
         duration: "300+ min",
         title: "ESCAPE JEPANG",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
-        href: "#",
+        href: "https://youtu.be/TdqRoCpXFXE?si=2ve_EpAITqxXhwLJ",
     },
 ];
 

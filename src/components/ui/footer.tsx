@@ -87,11 +87,11 @@ export default function Footer() {
               <h3 className="mb-4 text-sm font-bold text-white">Information</h3>
               <ul className="space-y-3">
                 {[
-                  ["Home", "#home"],
-                  ["About Us", "#about"],
-                  ["Our Works", "#event"],
-                  ["Pricing", "#pricing"],
-                  ["Contact", "#contact"],
+                  ["Home", "/"],
+                  ["About Us", "/about"],
+                  ["Online", "/online"],
+                  ["Offline", "/offline"],
+                  ["Merchandise", "/merchandise"],
                 ].map(([label, href]) => (
                   <li key={href}>
                     <a
@@ -108,9 +108,9 @@ export default function Footer() {
               <h3 className="mb-4 text-sm font-bold text-white">Network</h3>
               <ul className="space-y-3">
                 {[
-                  ["Instagram", "https://instagram.com"],
-                  ["TikTok", "https://tiktok.com/@at.escape"],
-                  ["Shopee", "https://shopee.com"],
+                  ["instagram", "https://www.instagram.com/at.escape/"],
+                  ["tiktok", "https://www.tiktok.com/@at.escape"],
+                  ["Shopee", "https://shopee.co.id/escapeid"],
                 ].map(([label, href]) => (
                   <li key={href}>
                     <a
@@ -135,7 +135,7 @@ export default function Footer() {
               >
                 escape@gmail.com
               </a>
-              
+
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {[
                   ["Home", "/"],
-                  ["About Us", "/About Us"],
+                  ["About Us", "/about"],
                   ["Offline", "/offline"],
                   ["Online", "/online"],
                   ["Merchandise", "/merchandise"],
@@ -252,10 +252,10 @@ export default function Footer() {
                 {[
                   [
                     "instagram",
-                    "https://www.youtube.com/playlist?list=PLSNt1tjjz_ArTDv1jVMjhHlaHM51euDq0",
+                    "https://www.instagram.com/at.escape/",
                   ],
                   ["tiktok", "https://www.tiktok.com/@at.escape"],
-                  ["Shopee", "https://shopee.com"],
+                  ["Shopee", "https://shopee.co.id/escapeid"],
                 ].map(([label, href]) => (
                   <li key={href}>
                     <a

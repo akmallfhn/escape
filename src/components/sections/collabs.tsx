@@ -73,7 +73,7 @@ export default function CollabSection() {
 
                 {/* Infinite Scroll Brands */}
                 <div className="mb-10 overflow-hidden sm:mb-12 md:mb-14 lg:mb-16">
-                    <div className="animate-scroll-seamless flex items-center">
+                    <div className="animate-scroll-seamless hover:[animation-play-state:paused] flex items-center">
                         <BrandStrip keyPrefix="set1" />
                         <BrandStrip keyPrefix="set2" />
                     </div>

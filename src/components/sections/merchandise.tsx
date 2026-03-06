@@ -88,16 +88,16 @@ export default function MerchandiseSection() {
                 {/* CTA Buttons */}
                 <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:mt-16">
                     <a
-                        href="#"
+                        href="https://shopee.co.id/escapeid"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-sm font-bold text-black transition-all duration-200 hover:bg-gray-100 active:scale-95 md:text-base"
+                        className="inline-flex items-center justify-center rounded-lg bg-[#DA393C] px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-[#b52b2d] active:scale-95 md:text-base"
                     >
                         Buy on Shopee
                     </a>
                     <a
                         href="/merch"
-                        className="inline-flex items-center justify-center rounded-lg border border-white/40 px-8 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:border-white hover:bg-white/5 active:scale-95 md:text-base"
+                        className="rounded-lg border border-white bg-transparent px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black active:scale-95 sm:px-8 sm:py-3 sm:text-base"
                     >
                         View All Catalogue
                     </a>
