@@ -152,11 +152,13 @@ export default function Footer() {
               <Escape />
             </div>
             <p className="text-xs leading-relaxed text-gray-400">
-              ESCAPE adalah "Ruang Waras". Sebuah podcast yang percaya bahwa
-              iman yang kokoh justru lahir dari pertanyaan-pertanyaan yang
-              berani, dan bahwa akal adalah anugerah terbesar untuk memahami
-              petunjuk Tuhan.
+              ESCAPE adalah "Ruang Waras". Sebuah podcast yang percaya bahwa iman yang kokoh justru lahir dari pertanyaan-pertanyaan yang berani, dan bahwa akal adalah anugerah terbesar untuk memahami petunjuk Tuhan.
+              <br />
+              <br />
+
+              “God Never Asked You to Stop Thinking, People Did”
             </p>
+
             <div className="flex items-center gap-5 pt-1">
               <a
                 href="https://www.instagram.com/at.escape/"

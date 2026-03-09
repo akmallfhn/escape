@@ -42,13 +42,6 @@ export default function HeroVideo() {
                     >
                         Buy Ticket
                     </a>
-                    <a
-                        href="https://www.darisini.com/events/cmlrjdkx1000mjy07vozbfzas"
-                        target="_blank"
-                        className="rounded-lg border border-white bg-transparent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black active:scale-95 sm:px-8 sm:py-3 sm:text-base"
-                    >
-                        Check Details
-                    </a>
                 </div>
             </div>
         </section>

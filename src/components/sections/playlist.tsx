@@ -18,7 +18,7 @@ const episodes = [
     },
     {
         image: "/images/playlist/pl-3.png",
-        type: "Offline Podcast",
+        type: "Aftermovie",
         duration: "300+ min",
         title: "Event offline pertama dari Escape! di event pertama ini kita bahas soal “Rumah Tangga”!",
         href: "https://youtu.be/HeU0S4LOaWs?si=t5p4oLWfs5OYGD93",
@@ -41,7 +41,7 @@ const episodes = [
     },
     {
         image: "/images/playlist/pl-6.png",
-        type: "Offline Podcast",
+        type: "Vlog Trip",
         duration: "300+ min",
         title: "ESCAPE JEPANG",
         description: "Tim Escape harus menyelesaikan quest yang diberikan dari Ustad Felix di Jepang, mau tau keseruannya? langsung tonton disini!",
@@ -84,10 +84,10 @@ export default function PlaylistSection() {
                             <div className="flex flex-col gap-2.5 pt-1 min-w-0">
                                 {/* Badges */}
                                 <div className="flex items-center gap-2 flex-wrap">
-                                    <span className="rounded-md border border-white/20 bg-white/10 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                                    <span className=" border border-white bg-white px-2.5 py-1 text-xs font-semibold text-black backdrop-blur-sm">
                                         {ep.type}
                                     </span>
-                                    <span className="rounded-md border border-white/20 bg-white/10 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                                    <span className=" px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                                         {ep.duration}
                                     </span>
                                 </div>

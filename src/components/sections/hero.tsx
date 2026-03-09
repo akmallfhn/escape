@@ -25,7 +25,7 @@ export default function Hero() {
                                 Buy Ticket
                             </a>
                             <a
-                                href="#detail"
+                                href="/offline"
                                 className="rounded-lg border border-white bg-transparent px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black active:scale-95 sm:px-8 sm:py-3 sm:text-base"
                             >
                                 Check Details

@@ -33,7 +33,7 @@ function ProductCard({ product }: { product: Product }) {
                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
             </div>
-            <div>
+            <div className="text-center">
                 <p className="text-sm font-semibold text-white">{product.name}</p>
                 <p className="text-xs text-gray-500 mt-0.5">{product.variant}</p>
                 <p className="text-base font-bold text-white mt-2">{product.price}</p>
@@ -80,8 +80,8 @@ export default function ProductCollection() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-                
-                <a    href="https://shopee.co.id/escapeid"
+
+                <a href="https://shopee.co.id/escapeid"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-lg bg-[#DA393C] px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-[#b52b2d] active:scale-95 md:text-base"

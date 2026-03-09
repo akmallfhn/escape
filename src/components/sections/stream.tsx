@@ -88,7 +88,7 @@ export default function StreamSection() {
                 {/* CTA */}
                 <div className="mt-10 flex justify-center">
                     <a
-                        href="https://www.youtube.com/embed/KcDUkmDJNwM?si=HrUqUfLAqq4r9_wg"
+                        href="https://www.youtube.com/live/KcDUkmDJNwM?si=jAt8DFg073JxuZ1m"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center rounded-lg border border-white px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-white hover:text-black active:scale-95"

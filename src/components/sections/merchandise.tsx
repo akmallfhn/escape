@@ -3,25 +3,25 @@ import Image from "next/image";
 export default function MerchandiseSection() {
     const products = [
         {
-            name: 'Hoodie Vol.3',
+            name: '[PREMIUM] Gua Hira Jacket Sajadah ESCAPE x Antarestar Special ',
             category: 'Hoodie',
             price: 'Rp 280.000',
             image: '/images/merch/merc-1.png',
         },
         {
-            name: 'Tshirt Vol.3',
+            name: '[PREMIUM] Lateral Orbit T-shirt ESCAPE x Antarestar Special Collaboration',
             category: 'T-shirt',
             price: 'Rp 180.000',
             image: '/images/merch/merc-2.png',
         },
         {
-            name: 'Shirt Jacket "The Second Coming"',
+            name: '[PREMIUM] Second Coming Shirt Jacket ESCAPE x Antarestar Special',
             category: 'Outer',
             price: 'Rp 230.000',
             image: '/images/merch/merc-3.png',
         },
         {
-            name: 'Jajadah (Jacket Sajadah)',
+            name: '[PREMIUM] Escape From Injustice Hoodie ESCAPE x Antarestar Special Collaboration',
             category: 'Hoodie',
             price: 'Rp 380.000',
             image: '/images/merch/merc-4.png',
@@ -33,7 +33,7 @@ export default function MerchandiseSection() {
             image: '/images/merch/merc-5.png',
         },
         {
-            name: 'T-shirt Vol.2',
+            name: '[T-shirt Vol.2] Menjadi Manusia Sebelum Beragama',
             category: 'T-shirt',
             price: 'Rp 180.000',
             image: '/images/merch/merc-6.png',
@@ -70,7 +70,7 @@ export default function MerchandiseSection() {
                             </div>
 
                             {/* Product Info — below card, left aligned */}
-                            <div className="mt-4 text-left">
+                            <div className="mt-4 text-center">
                                 <p className="text-sm font-semibold text-white md:text-base">
                                     {product.name}
                                 </p>

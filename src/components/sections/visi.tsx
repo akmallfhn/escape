@@ -3,19 +3,19 @@ import LogoScroll from "../ui/logo-stripe";
 
 const misiItems = [
     {
-        icon: <Image src="/icons/suara.png" alt="Suara Tanpa Batas" width={40} height={40} />,
-        title: "Suara Tanpa Batas",
-        description: "Banyak orang menyimpan pertanyaan mendalam tentang spiritualitas — tapi tidak tahu harus bertanya kepada siapa, atau takut dianggap sesat karena bertanya. Escape hadir untuk mengubah itu. Kami menjadi perwakilan dari setiap rasa ingin tahu masyarakat, dan menyampaikannya lewat percakapan yang jujur, berbobot, serta tetap berpijak pada sudut pandang Islam.",
+        icon: <Image src="/icons/think.png" alt="Suara Tanpa Batas" width={40} height={40} />,
+        title: "Logical Thinking Space",
+        description: "Membangun ruang diskusi yang mendorong audiens memahami spiritualitas dan Islam dengan pendekatan logis, sederhana, dan relevan.",
     },
     {
         icon: <Image src="/icons/chat.png" alt="Berani Terus Bertanya" width={40} height={40} />,
-        title: "Berani Terus Bertanya",
-        description: "Kami percaya bahwa keimanan yang kuat bukan lahir dari kepatuhan yang buta, melainkan dari pemahaman yang terus diasah. Melalui pendekatan lateral thinking dan semangat always question everything, Escape mengajak audiens untuk tidak hanya menerima — tapi juga menelaah, menganalisis, dan pada akhirnya menemukan keyakinan yang lebih dalam dan lebih kokoh dari sebelumnya.",
+        title: "Space to Ask",
+        description: "Membuka ruang bagi siapa pun untuk mengungkapkan pertanyaan, keresahan, dan rasa penasaran yang selama ini terpendam.",
     },
     {
-        icon: <Image src="/icons/question.png" alt="Aman Untuk Resah" width={40} height={40} />,
-        title: "Aman Untuk Resah",
-        description: "Keresahan tentang iman itu manusiawi — dan ia tidak seharusnya dipendam sendirian. Escape ingin menjadi ruang di mana siapa pun bisa duduk, bernapas, dan membicarakan pertanyaan-pertanyaan spiritualnya tanpa rasa takut dihakimi. Bukan untuk menggurui, bukan untuk menvonis — tapi untuk berpikir bersama, dengan kepala dingin dan hati yang terbuka.",
+        icon: <Image src="/icons/suara.png" alt="Aman Untuk Resah" width={40} height={40} />,
+        title: "Safe Space",
+        description: "Menghadirkan suasana diskusi yang aman, jujur, dan tidak menghakimi untuk membahas hal-hal yang sensitif maupun tabu.",
     },
 ];
 
