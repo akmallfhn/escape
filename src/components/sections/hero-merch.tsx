@@ -5,7 +5,7 @@ export default function MerchHero() {
     return (
         <section className="bg-black w-full">
             {/* Full-bleed hero image — no overlap */}
-            <div className="relative w-full aspect-[16/9] max-h-[90vh] min-h-[500px]">
+            <div className="relative w-full aspect-video max-h-[90vh]">
                 <Image
                     src="/images/hero-merch.png"
                     alt="Escape Fashion & Merch"
@@ -45,11 +45,7 @@ export default function MerchHero() {
                     {/* Right — Description */}
                     <div className="md:pt-10">
                         <p className="text-sm leading-relaxed text-gray-300 md:text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            varius enim in eros elementum tristique. Duis cursus, mi quis viverra
-                            ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
-                            Suspendisse varius enim in eros elementum tristique. Duis cursus, mi
-                            quis viverra ornare, eros dolor interdum nulla.
+                            Tingkatkan tidak hanya gayamu, tapi juga frekuensi jiwamu. Setiap koleksi Escape dirancang dengan intensi untuk menyelaraskan energi dan membangkitkan kesadaran dari dalam diri. Jadikan pakaian yang kamu kenakan sebagai pengingat untuk selalu hadir utuh, membumi, dan terhubung dengan semesta.
                         </p>
                     </div>
 

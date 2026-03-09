@@ -51,7 +51,7 @@ export default function CollabSection() {
                                 alt={brand.alt}
                                 width={brand.width}
                                 height={brand.height}
-                                className="h-full w-auto max-w-[80px] object-contain sm:max-w-[100px] md:max-w-[120px] grayscale"
+                                className="h-full w-auto max-w-20 object-contain sm:max-w-25 md:max-w-30 grayscale"
                             />
                         </div>
                     ))}

@@ -11,7 +11,7 @@ export default function Merchandise() {
         <div className="bg-black text-white overflow-hidden">
            <MerchHero />
            <NewArrivals />
-           <MerchCarousel />
+           {/* <MerchCarousel /> */}
            <ProductCollection />
            {/* <LogoScroll /> */}
 

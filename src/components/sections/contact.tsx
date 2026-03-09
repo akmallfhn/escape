@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ContactSection() {
     return(
         <section className="bg-black py-16 md:py-24">
-                <div className="mx-8 max-w-7xl px-6 lg:px-8">
+                <div className="mx-8 max-w-7xl lg:px-8">
                     <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
                         {/* Left Column - Text Content */}
                         <div className="max-w-2xl">

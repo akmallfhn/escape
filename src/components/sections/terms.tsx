@@ -45,9 +45,7 @@ export default function TermsSection() {
 
                     {/* RIGHT */}
                     <div className="flex-1">
-                        <p className="mb-10 text-base leading-relaxed text-gray-300">
-                            Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id scelerisque est ultricies ultricies. Duis est sit sed leo nisl, blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at scelerisque amet nulla purus habitasse.
-                        </p>
+                        
 
                         <div className="flex flex-col">
                             {termsData.map((item, i) => (

@@ -6,23 +6,21 @@ const episodes = [
         type: "Online Podcast",
         duration: "17+ Hours",
         title: "ESCAPE SEASON 2 (2026)",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
+        description: "Siapa disini yang kangen dengan Escape?! yuk tonton season terbaru dari Escape!",
         href: "https://www.youtube.com/playlist?list=PLSNt1tjjz_ArbAOmvUSXCAyUaksGy0lDs",
     },
     {
         image: "/images/playlist/pl-2.png",
         type: "Online Podcast",
         duration: "300+ min",
-        title: "ESCAPE SEASON 1 (2025)",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
+        title: "Belum kenal sama Escape, yuk tonton season pertama  Escape ramadhan!",
         href: "https://youtube.com/playlist?list=PLSNt1tjjz_ArTDv1jVMjhHlaHM51euDq0&si=OqVnRwGtmnPrz-S5",
     },
     {
         image: "/images/playlist/pl-3.png",
         type: "Offline Podcast",
         duration: "300+ min",
-        title: "ESCAPE MEDAN",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
+        title: "Event offline pertama dari Escape! di event pertama ini kita bahas soal “Rumah Tangga”!",
         href: "https://youtu.be/HeU0S4LOaWs?si=t5p4oLWfs5OYGD93",
     },
     {
@@ -30,7 +28,7 @@ const episodes = [
         type: "Offline Podcast",
         duration: "300+ min",
         title: "ESCAPE BANDUNG",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
+        description: "Event kedua Escape Offline kita bahas “Ego” sama warga Bandung! ",
         href: "#",
     },
     {
@@ -38,7 +36,7 @@ const episodes = [
         type: "Offline Podcast",
         duration: "300+ min",
         title: "ESCAPE JAKARTA",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
+        description: "Penutup dari event offline Escape yaitu Jakarta! sebelum memasuki babak baru, kita harus “Ascend” ke tempat yang lebih tinggi.",
         href: "#",
     },
     {
@@ -46,7 +44,7 @@ const episodes = [
         type: "Offline Podcast",
         duration: "300+ min",
         title: "ESCAPE JEPANG",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim...",
+        description: "Tim Escape harus menyelesaikan quest yang diberikan dari Ustad Felix di Jepang, mau tau keseruannya? langsung tonton disini!",
         href: "https://youtu.be/TdqRoCpXFXE?si=2ve_EpAITqxXhwLJ",
     },
 ];
@@ -67,7 +65,7 @@ export default function PlaylistSection() {
                         <a
                             key={index}
                             href={ep.href}
-                            target="_blank"
+                            
                             rel="noopener noreferrer"
                             className="group flex gap-5 items-start"
                         >

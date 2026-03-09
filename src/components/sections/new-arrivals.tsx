@@ -64,7 +64,7 @@ export default function NewArrivals() {
 
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
                     
-                    <a    href="https://shopee.com"
+                    <a    href="https://shopee.co.id/escapeid"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center rounded-lg bg-[#DA393C] px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-[#b52b2d] active:scale-95 md:text-base"

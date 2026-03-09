@@ -51,7 +51,7 @@ const cards: CardData[] = [
 
 function CheckCircle({ dark }: { dark: boolean }) {
     return (
-        <span className={`mt-0.5 w-[18px] h-[18px] rounded-full flex items-center justify-center flex-shrink-0 ${dark ? "bg-white" : "bg-black"}`}>
+        <span className={`mt-0.5 size-4.5 rounded-full flex items-center justify-center shrink-0 ${dark ? "bg-white" : "bg-black"}`}>
             <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
                 <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke={dark ? "black" : "white"} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -73,7 +73,7 @@ function TicketCard({ card }: { card: CardData }) {
             }}
         >
             <div className="flex ml-2 flex-col items-stretch px-7 pt-[16%] pb-6">
-                <div className={`flex flex-col gap-[10px] ${text}`}>
+                <div className={`flex flex-col gap-2.5 ${text}`}>
                     <h2 className="font-black uppercase text-4xl leading-tight tracking-wide">
                         {card.tier}
                     </h2>
@@ -83,7 +83,7 @@ function TicketCard({ card }: { card: CardData }) {
 
                     <div className={`h-px w-4/5 my-1 ${card.dark ? "bg-white/30" : "bg-black/25"}`} />
 
-                    <ul className="flex flex-col gap-[10px]">
+                    <ul className="flex flex-col gap-2.5">
                         {card.features.map((f, i) => (
                             <li key={i} className="flex items-start gap-2">
                                 <CheckCircle dark={card.dark} />

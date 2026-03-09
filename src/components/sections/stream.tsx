@@ -50,8 +50,8 @@ export default function StreamSection() {
                 <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl shadow-black/60" style={{ paddingBottom: '56.25%' }}>
                     <iframe
                         className="absolute inset-0 h-full w-full"
-                        src="https://www.youtube.com/embed/3DviVcQhW9w?si=2ZenOvIRYJyKiENk"
-                        title="Escape Live Stream - Veren Mau Resign"
+                        src="https://www.youtube.com/embed/KcDUkmDJNwM?si=HrUqUfLAqq4r9_wg"
+                        title="(LIVE STREAM) PERANG DUNIA 3 UDAH MULAI ? DIMANA BOP ?! - Escape Eps 13 (ft Felix Siauw, Koi, Veren)"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
@@ -88,7 +88,7 @@ export default function StreamSection() {
                 {/* CTA */}
                 <div className="mt-10 flex justify-center">
                     <a
-                        href="https://www.youtube.com/live/3DviVcQhW9w?si=oLDcZxNpWR0Y69__"
+                        href="https://www.youtube.com/embed/KcDUkmDJNwM?si=HrUqUfLAqq4r9_wg"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center rounded-lg border border-white px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-white hover:text-black active:scale-95"

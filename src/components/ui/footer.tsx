@@ -2,7 +2,7 @@ import Escape from "../icons/escape";
 
 export default function Footer() {
   return (
-    <footer className="bg-black px-8 lg:px-18 py-12 md:py-16">
+    <footer className="bg-black px-1 lg:px-18 py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* ── MOBILE + TABLET layout (hidden on lg+) ── */}
         <div className="lg:hidden">
@@ -64,18 +64,22 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hi.atescape@gmail.com&su=Ajakan%20Kolaborasi%20dan%20Sponsorship%20Bersama%20Escape&body=Halo%20Tim%20Escape,%0A%0APerkenalkan,%20saya%20[Nama%20Anda]%20dari%20[Nama%20Perusahaan%20/%20Brand].%0AKami%20ingin%20mengajak%20Escape%20untuk%20berkolaborasi%20dalam%20bentuk%20sponsorship.%20Berikut%20gambaran%20singkat%20mengenai%20rencana%20kerja%20sama%20yang%20kami%20ajukan:%0A%0A-%20Nama%20Perusahaan%20/%20Brand:%20%0A-%20PIC%20/%20Kontak:%20%0A-%20Jenis%20Kolaborasi%20yang%20Diajukan:%20(Sponsorship,%20Media%20Partner,%20Event%20Support,%20dll)%0A-%20Bentuk%20Dukungan%20yang%20Kami%20Tawarkan%20kepada%20Escape:%20%0A-%20Bentuk%20Kolaborasi%20atau%20Dukungan%20yang%20Kami%20Harapkan%20dari%20Escape:%20%0A-%20Benefit%20untuk%20Escape:%20%0A-%20Periode%20atau%20Tanggal%20Kegiatan:%20%0A-%20Link%20Deck%20/%20Proposal%20(jika%20ada):%20%0A%0AKami%20sangat%20terbuka%20untuk%20mendiskusikan%20bentuk%20kerja%20sama%20yang%20paling%20sesuai%20dengan%20arah%20dan%20strategi%20Escape.%0A%0ATerima%20kasih%20atas%20perhatian%20dan%20waktunya.%0AKami%20menantikan%20kesempatan%20untuk%20berkolaborasi%20dengan%20Escape.%0A%0ASalam%20hangat,%0A[Nama%20Anda]%0A[Perusahaan%20/%20Divisi]%0A[Nomor%20Kontak]"
                 className="text-gray-400 hover:text-white transition-colors"
-                aria-label="Twitter/X"
+                aria-label="Email"
               >
                 <svg
                   className="h-5 w-5"
-                  fill="currentColor"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0-9.75 6.75L2.25 6.75"
+                  />
                 </svg>
               </a>
             </div>
@@ -130,7 +134,7 @@ export default function Footer() {
                 Email Escape
               </h3>
               <a
-                href="mailto:escape@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hi.atescape@gmail.com&su=Ajakan%20Kolaborasi%20dan%20Sponsorship%20Bersama%20Escape&body=Halo%20Tim%20Escape,%0A%0APerkenalkan,%20saya%20[Nama%20Anda]%20dari%20[Nama%20Perusahaan%20/%20Brand].%0AKami%20ingin%20mengajak%20Escape%20untuk%20berkolaborasi%20dalam%20bentuk%20sponsorship.%20Berikut%20gambaran%20singkat%20mengenai%20rencana%20kerja%20sama%20yang%20kami%20ajukan:%0A%0A-%20Nama%20Perusahaan%20/%20Brand:%20%0A-%20PIC%20/%20Kontak:%20%0A-%20Jenis%20Kolaborasi%20yang%20Diajukan:%20(Sponsorship,%20Media%20Partner,%20Event%20Support,%20dll)%0A-%20Bentuk%20Dukungan%20yang%20Kami%20Tawarkan%20kepada%20Escape:%20%0A-%20Bentuk%20Kolaborasi%20atau%20Dukungan%20yang%20Kami%20Harapkan%20dari%20Escape:%20%0A-%20Benefit%20untuk%20Escape:%20%0A-%20Periode%20atau%20Tanggal%20Kegiatan:%20%0A-%20Link%20Deck%20/%20Proposal%20(jika%20ada):%20%0A%0AKami%20sangat%20terbuka%20untuk%20mendiskusikan%20bentuk%20kerja%20sama%20yang%20paling%20sesuai%20dengan%20arah%20dan%20strategi%20Escape.%0A%0ATerima%20kasih%20atas%20perhatian%20dan%20waktunya.%0AKami%20menantikan%20kesempatan%20untuk%20berkolaborasi%20dengan%20Escape.%0A%0ASalam%20hangat,%0A[Nama%20Anda]%0A[Perusahaan%20/%20Divisi]%0A[Nomor%20Kontak]"
                 className="text-sm text-gray-400 hover:text-white transition-colors"
               >
                 escape@gmail.com
@@ -276,7 +280,7 @@ export default function Footer() {
                 Email escape:
               </h3>
               <a
-                href="mailto:escape@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hi.atescape@gmail.com&su=Ajakan%20Kolaborasi%20dan%20Sponsorship%20Bersama%20Escape&body=Halo%20Tim%20Escape,%0A%0APerkenalkan,%20saya%20[Nama%20Anda]%20dari%20[Nama%20Perusahaan%20/%20Brand].%0AKami%20ingin%20mengajak%20Escape%20untuk%20berkolaborasi%20dalam%20bentuk%20sponsorship.%20Berikut%20gambaran%20singkat%20mengenai%20rencana%20kerja%20sama%20yang%20kami%20ajukan:%0A%0A-%20Nama%20Perusahaan%20/%20Brand:%20%0A-%20PIC%20/%20Kontak:%20%0A-%20Jenis%20Kolaborasi%20yang%20Diajukan:%20(Sponsorship,%20Media%20Partner,%20Event%20Support,%20dll)%0A-%20Bentuk%20Dukungan%20yang%20Kami%20Tawarkan%20kepada%20Escape:%20%0A-%20Bentuk%20Kolaborasi%20atau%20Dukungan%20yang%20Kami%20Harapkan%20dari%20Escape:%20%0A-%20Benefit%20untuk%20Escape:%20%0A-%20Periode%20atau%20Tanggal%20Kegiatan:%20%0A-%20Link%20Deck%20/%20Proposal%20(jika%20ada):%20%0A%0AKami%20sangat%20terbuka%20untuk%20mendiskusikan%20bentuk%20kerja%20sama%20yang%20paling%20sesuai%20dengan%20arah%20dan%20strategi%20Escape.%0A%0ATerima%20kasih%20atas%20perhatian%20dan%20waktunya.%0AKami%20menantikan%20kesempatan%20untuk%20berkolaborasi%20dengan%20Escape.%0A%0ASalam%20hangat,%0A[Nama%20Anda]%0A[Perusahaan%20/%20Divisi]%0A[Nomor%20Kontak]"
                 className="text-sm text-gray-400 hover:text-white transition-colors"
               >
                 escape@gmail.com

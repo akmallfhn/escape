@@ -36,13 +36,15 @@ export default function HeroVideo() {
 
                 <div className="mt-4 flex gap-3 sm:gap-4">
                     <a
-                        href="#ticket"
+                        href="https://drsn.me/escapemakassar2026"
+                        target="_blank"
                         className="rounded-lg bg-[#DA393C] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#b52b2d] active:scale-95 sm:px-8 sm:py-3 sm:text-base"
                     >
                         Buy Ticket
                     </a>
                     <a
-                        href="#detail"
+                        href="https://www.darisini.com/events/cmlrjdkx1000mjy07vozbfzas"
+                        target="_blank"
                         className="rounded-lg border border-white bg-transparent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white hover:text-black active:scale-95 sm:px-8 sm:py-3 sm:text-base"
                     >
                         Check Details
