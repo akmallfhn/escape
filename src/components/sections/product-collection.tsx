@@ -16,15 +16,15 @@ const vol2Products: Product[] = [
 ];
 
 const vol1Products: Product[] = [
-    { name: "T-shirt Escape Vol.1", variant: "T-shirt", price: "Sold Out", image: "/images/merch/merc-10.png" },
-    { name: "Hoodie Escape Vol.1", variant: "Hoodie", price: "Sold Out", image: "/images/merch/merc-7.png" },
+    { name: "T-shirt Escape Vol.1", variant: "T-shirt", price: "189.000", image: "/images/merch/merc-10.png" },
+    { name: "Hoodie Escape Vol.1", variant: "Hoodie", price: "350.000", image: "/images/merch/merc-7.png" },
     { name: "Escape Totebag Vol.1", variant: "Merchandise", price: "Rp 110.000", image: "/images/merch/merc-13.png" },
 ];
 
 function ProductCard({ product }: { product: Product }) {
     return (
         <div className="flex flex-col gap-3 group cursor-pointer">
-            <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center p-4 sm:p-8 aspect-[4/5]">
+            <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center p-4 sm:p-8 aspect-4/5">
                 <Image
                     src={product.image}
                     alt={product.name}

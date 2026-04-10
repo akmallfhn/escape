@@ -257,10 +257,10 @@ export default function Footer() {
               <ul className="space-y-3">
                 {[
                   [
-                    "instagram",
+                    "Instagram",
                     "https://www.instagram.com/at.escape/",
                   ],
-                  ["tiktok", "https://www.tiktok.com/@at.escape"],
+                  ["Tiktok", "https://www.tiktok.com/@at.escape"],
                   ["Shopee", "https://shopee.co.id/escapeid"],
                 ].map(([label, href]) => (
                   <li key={href}>

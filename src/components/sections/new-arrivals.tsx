@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const newArrivals = [
     {
-        name: "Jaket Sajadah",
+        name: "Jaket Sajadah (Jajadah)",
         category: "Outer",
         price: "Rp 470.000",
         image: "/images/merch/merc-1.png",
