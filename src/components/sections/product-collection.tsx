@@ -16,8 +16,8 @@ const vol2Products: Product[] = [
 ];
 
 const vol1Products: Product[] = [
-    { name: "T-shirt Escape Vol.1", variant: "T-shirt", price: "189.000", image: "/images/merch/merc-10.png" },
-    { name: "Hoodie Escape Vol.1", variant: "Hoodie", price: "350.000", image: "/images/merch/merc-7.png" },
+    { name: "T-shirt Escape Vol.1", variant: "T-shirt", price: "Rp 189.000", image: "/images/merch/merc-10.png" },
+    { name: "Hoodie Escape Vol.1", variant: "Hoodie", price: "Rp 350.000", image: "/images/merch/merc-7.png" },
     { name: "Escape Totebag Vol.1", variant: "Merchandise", price: "Rp 110.000", image: "/images/merch/merc-13.png" },
 ];
 
