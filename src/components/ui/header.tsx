@@ -67,16 +67,6 @@ export default function Header() {
                 }
                 .sidebar-link:hover { color: #fff; }
                 .sidebar-link.active { color: #fff; font-weight: 700; }
-                .sidebar-bottom-link {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    color: #888;
-                    font-size: 0.875rem;
-                    text-decoration: none;
-                    transition: color 0.2s ease;
-                }
-                .sidebar-bottom-link:hover { color: #fff; }
                 .hamburger-line {
                     display: block;
                     width: 20px;
@@ -118,48 +108,48 @@ export default function Header() {
                         );
                     })}
                 </nav>
-
-                {/* <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
-                    <a href="#support" className="sidebar-bottom-link" onClick={close}>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/>
-                        </svg>
-                        Support
-                    </a>
-                    <a href="#settings" className="sidebar-bottom-link" onClick={close}>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                        </svg>
-                        Settings
-                    </a>
-                </div> */}
             </aside>
 
-            {/* header bar */}
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'backdrop-blur-md bg-black/50 border-b border-white/10' : 'bg-transparent'}`}>
-                <nav className="mx-auto flex flex-row-reverse h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
+            {/* header bar (Compact Dynamic Island Wrapper) */}
+            <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+                <header 
+                    className={`pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                        scrolled 
+                            // Changed to max-w-lg (shorter width) and kept rounded-[16px]
+                            ? 'mt-5 w-[calc(100%-3.5rem)] max-w-md bg-black/70 backdrop-blur-md border border-white/10 shadow-2xl rounded-[16px]' 
+                            : 'mt-0 w-full max-w-7xl bg-transparent border-transparent rounded-none'
+                    }`}
+                >
+                    <nav className={`relative flex flex-row-reverse w-full items-center justify-between transition-all duration-500 ${
+                        // Changed to h-12 (more compact height) and px-5 (tighter padding)
+                        scrolled ? 'h-15 px-10' : 'h-20 px-6 lg:px-10'
+                    }`}>
 
-                    
-
-                    <div className="absolute left-1/2 -translate-x-1/2">
-                        <Escape />
-                    </div>
-
-                    <button
-                        onClick={() => setIsMenuOpen(prev => !prev)}
-                        className="flex items-center gap-2 text-sm font-medium text-white"
-                        aria-label="Toggle menu"
-                        aria-expanded={isMenuOpen}
-                    >
-                        <span className="tracking-wide">Menu</span>
-                        <div className={`flex flex-col justify-center ${isMenuOpen ? 'hamburger-open' : ''}`}>
-                            <span className="hamburger-line" />
-                            <span className="hamburger-line" />
-                            <span className="hamburger-line" />
+                        <div className="absolute left-1/2 -translate-x-1/2 transition-transform duration-500">
+                            {/* Adding a slight scale down on scroll to fit the tighter height perfectly */}
+                            <div className={`${scrolled ? 'scale-90' : 'scale-100'} transition-transform duration-500 origin-center`}>
+                                <Escape />
+                            </div>
                         </div>
-                    </button>
-                </nav>
-            </header>
+
+                        <button
+                            onClick={() => setIsMenuOpen(prev => !prev)}
+                            className="flex items-center gap-2 font-medium text-white transition-opacity hover:opacity-80"
+                            aria-label="Toggle menu"
+                            aria-expanded={isMenuOpen}
+                        >
+                            {/* Adjusted text size to match the compact feel */}
+                            <span className={`tracking-wide transition-all duration-500 ${scrolled ? 'text-xs' : 'text-sm'}`}>Menu</span>
+                            <div className={`flex flex-col justify-center ${isMenuOpen ? 'hamburger-open' : ''}`}>
+                                <span className="hamburger-line" />
+                                <span className="hamburger-line" />
+                                <span className="hamburger-line" />
+                            </div>
+                        </button>
+
+                    </nav>
+                </header>
+            </div>
         </>
     );
 }

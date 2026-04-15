@@ -9,7 +9,8 @@ import MerchandiseModal from './modals/merchandise-modal';
 import PlaylistModal from './modals/playlist-modal';
 import PromotionalBannerModal from './modals/promotional-banner-modal';
 
-type ActivePage = 'dashboard' | 'offline' | 'online';
+// Removed 'offline' from ActivePage
+type ActivePage = 'dashboard' | 'online';
 type ModalType = 'hero-event' | 'event-detail' | 'merch' | 'playlist' | 'promo-banner' | null;
 
 interface ModalState {
@@ -82,7 +83,6 @@ export default function AdminShell() {
 
   const pageTitles: Record<ActivePage, string> = {
     dashboard: 'Dashboard',
-    offline: 'Offline Page',
     online: 'Online Page',
   };
 
@@ -112,17 +112,6 @@ export default function AdminShell() {
               { label: 'Hero Event', onClick: () => { setActivePage('dashboard'); setModal({ type: 'hero-event', ctx: 'dashboard', title: 'UBAH HERO EVENT (DASHBOARD) - ONLINE PAGE' }); } },
               { label: 'Event Detail Section', onClick: () => { setActivePage('dashboard'); setModal({ type: 'event-detail', title: 'EVENT DETAIL SECTION' }); } },
               { label: 'Escape Official Merchandise', onClick: () => setActivePage('dashboard') },
-            ]}
-          />
-          <div className="my-2 border-t border-white/8" />
-          <NavSection
-            label="Offline Page"
-            icon={<IconOffline />}
-            active={activePage === 'offline'}
-            collapsed={sidebarCollapsed}
-            onClick={() => setActivePage('offline')}
-            items={[
-              { label: 'Hero Event', onClick: () => { setActivePage('offline'); setModal({ type: 'hero-event', ctx: 'offline', title: 'UBAH HERO EVENT - OFFLINE PAGE' }); } },
             ]}
           />
           <div className="my-2 border-t border-white/8" />
@@ -203,11 +192,7 @@ export default function AdminShell() {
               onDeleteMerch={deleteMerch}
             />
           )}
-          {activePage === 'offline' && (
-            <OfflineView
-              onEditHero={() => setModal({ type: 'hero-event', ctx: 'offline', title: 'UBAH HERO EVENT - OFFLINE PAGE' })}
-            />
-          )}
+          
           {activePage === 'online' && (
             <OnlineView
               playlist={playlist}
@@ -371,25 +356,6 @@ function DashboardView({ merch, onEditHero, onEditEventDetail, onEditMerch, onAd
             </div>
           )}
         </div>
-      </SectionBlock>
-    </div>
-  );
-}
-
-function OfflineView({ onEditHero }: { onEditHero: () => void }) {
-  return (
-    <div className="flex flex-col gap-12 max-w-4xl">
-      <SectionBlock title="Hero Event Section">
-        <PreviewCard onClick={onEditHero}>
-          <div className="w-full h-40 bg-gradient-to-br from-[#1a1a2a] to-[#101018] rounded-xl flex items-center justify-center relative overflow-hidden border border-white/8">
-            <div className="absolute inset-0 opacity-20 bg-[url('/images/hero3.png')] bg-cover bg-center" />
-            <div className="relative z-10 flex flex-col items-center gap-1">
-              <span className="text-xs text-[#999] uppercase tracking-widest">Offline Page Hero</span>
-              <span className="text-white font-black text-xl uppercase">ESCAPE ROOM</span>
-            </div>
-          </div>
-          <EditBadge />
-        </PreviewCard>
       </SectionBlock>
     </div>
   );
@@ -567,15 +533,6 @@ function IconDashboard() {
     <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
       <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" />
       <rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
-    </svg>
-  );
-}
-
-function IconOffline() {
-  return (
-    <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" />
-      <path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" />
     </svg>
   );
 }

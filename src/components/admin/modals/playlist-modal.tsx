@@ -6,7 +6,7 @@ import { ModalWrapper, ModalFooter, Field, FileButton } from './hero-event-modal
 interface PlaylistItem {
   id?: string;
   nama_playlist?: string;
-  youtube_playlist_id?: string;
+  youtube_playlist_id?: string; // We will use this for BOTH IDs and Full Links now!
   category?: string;
   duration?: string;
   deskripsi?: string;
@@ -73,32 +73,35 @@ export default function PlaylistModal({ itemId, onClose, onSaved }: Props) {
         <div className="flex items-center justify-center py-20 text-[#666] text-sm">Loading...</div>
       ) : (
         <div className="flex flex-col gap-6">
+          
+          {/* Row 1: Nama & Link */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">NAMA PLAYLIST</label>
+              <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">NAMA PLAYLIST / EPISODE</label>
               <input type="text" value={data.nama_playlist || ''} onChange={e => set('nama_playlist', e.target.value)}
                 placeholder="Escape Season 2 (2026)"
                 className="bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-white/25" />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">YOUTUBE PLAYLIST ID</label>
+              <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">LINK URL (Spotify/YT) ATAU PLAYLIST ID</label>
               <input type="text" value={data.youtube_playlist_id || ''} onChange={e => set('youtube_playlist_id', e.target.value)}
-                placeholder="PLabc123xyz789"
+                placeholder="https://spotify.com/... ATAU PLabc123xyz"
                 className="bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-white/25" />
             </div>
           </div>
 
+          {/* Row 2: Details */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">CATEGORY</label>
               <input type="text" value={data.category || ''} onChange={e => set('category', e.target.value)}
-                placeholder="Online Podcast"
+                placeholder="Online Podcast, Youtube Video, dll"
                 className="bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-white/25" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">DURATION</label>
               <input type="text" value={data.duration || ''} onChange={e => set('duration', e.target.value)}
-                placeholder="300+ min"
+                placeholder="300+ min, 1.5 Hours, dll"
                 className="bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-[#444] focus:outline-none focus:border-white/25" />
             </div>
           </div>

@@ -6,23 +6,21 @@ import PastEvents from "@/components/sections/past-events";
 import SeatPlan from "@/components/sections/seat-plan";
 import TermsSection from "@/components/sections/terms";
 import Why from "@/components/sections/why";
-import LogoScroll from "@/components/ui/logo-stripe";
-export const dynamic = 'force-static';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function Offline() {
-    return (
-        <div className="bg-black text-white overflow-hidden">
-           <HeroVideo />
-           <Why />
-           <SeatPlan />
-           <Cards />
-           {/* <LogoScroll /> */}
-           <PastEvents />
-           <EventDetailSection />
-           <TermsSection />
-           <ContactSection />
-           {/* <LogoScroll /> */}
-
-        </div>
-    )
+  return (
+    <div className="bg-black text-white overflow-hidden">
+      <HeroVideo />
+      <Why />
+      <SeatPlan />
+      <Cards />
+      <PastEvents />
+      <EventDetailSection />
+      <TermsSection />
+      <ContactSection />
+    </div>
+  );
 }

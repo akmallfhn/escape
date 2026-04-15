@@ -3,19 +3,18 @@ import HeroOnline from "@/components/sections/hero-online";
 import PlaylistSection from "@/components/sections/playlist";
 import SpotifySection from "@/components/sections/spotify";
 import StreamSection from "@/components/sections/stream";
-import LogoScroll from "@/components/ui/logo-stripe";
-export const dynamic = 'force-static';
 
-export default function Offline() {
-    return (
-        <div className="bg-black text-white overflow-hidden">
-          <HeroOnline />
-          <PlaylistSection />
-          <SpotifySection />
-          <StreamSection />
-          <ContactSection />
-          {/* <LogoScroll /> */}
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-        </div>
-    )
+export default function Online() {
+  return (
+    <div className="bg-black text-white overflow-hidden">
+      <HeroOnline />
+      <PlaylistSection />
+      <SpotifySection />
+      <StreamSection />
+      <ContactSection />
+    </div>
+  );
 }

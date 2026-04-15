@@ -73,7 +73,6 @@ export default function MerchandiseModal({ itemId, onClose, onSaved }: Props) {
         <div className="flex items-center justify-center py-20 text-[#666] text-sm">Loading...</div>
       ) : (
         <div className="flex flex-col gap-6">
-          {/* Foto */}
           <div className="flex flex-col gap-3">
             <p className="text-[#999] text-xs font-semibold tracking-wider uppercase">Foto</p>
             <div className="flex items-start gap-5">
@@ -99,7 +98,6 @@ export default function MerchandiseModal({ itemId, onClose, onSaved }: Props) {
 
           <Field label="Nama Produk" value={data.nama_produk || ''} onChange={v => set('nama_produk', v)} placeholder="T-shirt Escape Vol.1" />
 
-          {/* Kategori dropdown */}
           <div className="flex flex-col gap-2">
             <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">Kategori</label>
             <div className="relative">
