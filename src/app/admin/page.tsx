@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import LogoIcon from '@/components/icons/logo';
+import { verifyAdminPassword } from './actions'; // Make sure this path matches where you saved Step 2
 
 export default function AdminLogin() {
   const [password, setPassword] = useState('');
@@ -15,21 +16,21 @@ export default function AdminLogin() {
     }
   }, [router]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    setTimeout(() => {
-      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
-      if (adminPassword && password === adminPassword) {
-        localStorage.setItem('escape_admin_auth', 'true');
-        router.push('/admin/dashboard');
-      } else {
-        setError('Password salah. Coba lagi.');
-        setLoading(false);
-      }
-    }, 400);
+    // Call the secure Server Action
+    const isPasswordCorrect = await verifyAdminPassword(password);
+
+    if (isPasswordCorrect) {
+      localStorage.setItem('escape_admin_auth', 'true');
+      router.push('/admin/dashboard');
+    } else {
+      setError('Password salah. Coba lagi.');
+      setLoading(false);
+    }
   };
 
   return (
