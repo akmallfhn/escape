@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/ui/header";
-import Footer from "@/components/ui/footer";
+import ClientShell from "@/components/ui/client-shell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,20 +23,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Replace the return statement:
-return (
-  <html lang="en">
-    <head>
-      <link rel="preconnect" href="https://res.cloudinary.com" />
-      <link rel="dns-prefetch" href="https://res.cloudinary.com" />
-      <link rel="preconnect" href="https://www.youtube.com" />
-      <link rel="dns-prefetch" href="https://www.youtube.com" />
-    </head>
-    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <Header />
-      {children}
-      <Footer />
-    </body>
-  </html>
-);
+  return (
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ClientShell>{children}</ClientShell>
+      </body>
+    </html>
+  );
 }
