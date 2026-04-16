@@ -2,9 +2,10 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import LogoIcon from '@/components/icons/logo';
-import { verifyAdminPassword } from './actions'; // Make sure this path matches where you saved Step 2
+import { loginAdmin, forceCreateAdminUser } from './actions';
 
 export default function AdminLogin() {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,16 +22,28 @@ export default function AdminLogin() {
     setLoading(true);
     setError('');
 
-    // Call the secure Server Action
-    const isPasswordCorrect = await verifyAdminPassword(password);
+    const result = await loginAdmin(email, password);
 
-    if (isPasswordCorrect) {
+    if (result.success) {
       localStorage.setItem('escape_admin_auth', 'true');
       router.push('/admin/dashboard');
     } else {
-      setError('Password salah. Coba lagi.');
+      setError(result.error || 'Login failed.');
       setLoading(false);
     }
+  };
+
+  // The Dashboard Bypass Function
+  const handleInitialSetup = async () => {
+    if (!email || !password) return alert("Fill in email and password first!");
+    setLoading(true);
+    const result = await forceCreateAdminUser(email, password);
+    if (result.success) {
+      alert("Success! Your account is created. You can now log in.");
+    } else {
+      alert("Setup Error: " + result.error);
+    }
+    setLoading(false);
   };
 
   return (
@@ -41,18 +54,25 @@ export default function AdminLogin() {
             <LogoIcon width="36" height="36" fill="white" />
             <span className="text-white font-bold text-lg tracking-widest uppercase">Escape Admin</span>
           </div>
-          <p className="text-[#666] text-sm text-center">Enter your admin password to continue</p>
+          <p className="text-[#666] text-sm text-center">Log in to your admin account</p>
         </div>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-3">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); setError(''); }}
+            placeholder="Email Address"
+            className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-[#555] focus:outline-none focus:border-white/25 text-sm transition-colors"
+            required
+          />
           <input
             type="password"
             value={password}
             onChange={(e) => { setPassword(e.target.value); setError(''); }}
             placeholder="Password"
             className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-[#555] focus:outline-none focus:border-white/25 text-sm transition-colors"
-            autoFocus
-            autoComplete="current-password"
+            required
           />
 
           {error && (
@@ -61,12 +81,14 @@ export default function AdminLogin() {
 
           <button
             type="submit"
-            disabled={loading || !password.trim()}
+            disabled={loading || !password.trim() || !email.trim()}
             className="bg-[#DA393C] text-white font-bold py-3 rounded-lg text-sm hover:bg-[#b52b2d] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed transition-all mt-1 uppercase tracking-wider"
           >
-            {loading ? 'Memverifikasi...' : 'Login'}
+            {loading ? 'Processing...' : 'Login'}
           </button>
         </form>
+
+       
 
         <p className="text-center text-[#333] text-xs mt-10">
           Escape Admin Panel &copy; 2026

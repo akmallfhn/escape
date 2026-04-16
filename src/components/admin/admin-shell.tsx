@@ -3,13 +3,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import LogoIcon from '@/components/icons/logo';
 import { supabase } from '@/lib/supabase';
+import { logoutAdmin } from '@/app/admin/actions';
 import HeroEventModal from './modals/hero-event-modal';
 import EventDetailModal from './modals/event-detail-modal';
 import MerchandiseModal from './modals/merchandise-modal';
 import PlaylistModal from './modals/playlist-modal';
 import PromotionalBannerModal from './modals/promotional-banner-modal';
 
-// Removed 'offline' from ActivePage
 type ActivePage = 'dashboard' | 'online';
 type ModalType = 'hero-event' | 'event-detail' | 'merch' | 'playlist' | 'promo-banner' | null;
 
@@ -64,8 +64,10 @@ export default function AdminShell() {
     loadPlaylist();
   };
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
+    await logoutAdmin();
     localStorage.removeItem('escape_admin_auth');
+    localStorage.removeItem('escape_admin_email');
     router.push('/admin');
   };
 
@@ -159,7 +161,7 @@ export default function AdminShell() {
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-white text-xs font-semibold truncate">Escape Admin</span>
-                <span className="text-[#555] text-[10px] truncate">admin@escape</span>
+                <span className="text-[#555] text-[10px] truncate">{typeof window !== 'undefined' ? localStorage.getItem('escape_admin_email') || 'admin@escape' : 'admin@escape'}</span>
               </div>
             </div>
           )}
@@ -255,8 +257,6 @@ export default function AdminShell() {
   );
 }
 
-// ── Sidebar NavSection ────────────────────────────────────────────────────────
-
 function NavSection({ label, icon, active, collapsed, onClick, items }: {
   label: string; icon: React.ReactNode; active: boolean; collapsed: boolean;
   onClick: () => void; items: { label: string; onClick: () => void }[];
@@ -293,8 +293,6 @@ function NavSection({ label, icon, active, collapsed, onClick, items }: {
     </div>
   );
 }
-
-// ── Page Views ────────────────────────────────────────────────────────────────
 
 function DashboardView({ merch, onEditHero, onEditEventDetail, onEditMerch, onAddMerch, onDeleteMerch }: {
   merch: MerchItem[];
@@ -425,8 +423,6 @@ function OnlineView({ playlist, onEditHero, onEditPlaylist, onAddPlaylist, onDel
   );
 }
 
-// ── Card components ───────────────────────────────────────────────────────────
-
 function SectionBlock({ title, children, action }: { title: string; children: React.ReactNode; action?: React.ReactNode }) {
   return (
     <div>
@@ -512,7 +508,7 @@ function PlaylistCard({ item, onEdit, onDelete }: { item: PlaylistItem; onEdit: 
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-white text-sm font-semibold truncate">{item.nama_playlist || 'Nama playlist'}</p>
-        <p className="text-[#555] text-xs mt-0.5">{item.category || '-'} &middot; {item.duration || '-'}</p>
+        <p className="text-[#555] text-xs mt-0.5">{item.category || '-'} • {item.duration || '-'}</p>
       </div>
       <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
         <button onClick={onEdit} className="bg-white/8 hover:bg-white/12 text-white text-xs px-3 py-1.5 rounded-lg transition-colors">Edit</button>
@@ -525,8 +521,6 @@ function PlaylistCard({ item, onEdit, onDelete }: { item: PlaylistItem; onEdit: 
     </div>
   );
 }
-
-// ── Icon helpers ──────────────────────────────────────────────────────────────
 
 function IconDashboard() {
   return (
