@@ -33,7 +33,7 @@ export default function History() {
                 </div>
 
                 {/* Bottom — YouTube Embed */}
-                <div className="mt-16 px-24 md:mt-20 lg:mt-24">
+                <div className="mt-16 lg:px-24 md:mt-20 lg:mt-24">
                     <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl shadow-black/60" style={{ paddingBottom: '56.25%' }}>
                         <iframe
                             className="absolute inset-0 h-full w-full"
