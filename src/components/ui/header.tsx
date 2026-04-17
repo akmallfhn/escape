@@ -15,12 +15,43 @@ const NAV_LINKS = [
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [scrollLag, setScrollLag] = useState(0); // NEW: State for our bouncy latency
     const pathname = usePathname();
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 10);
+        let lastScrollY = window.scrollY;
+        let timeoutId: NodeJS.Timeout;
+
+        const onScroll = () => {
+            const currentScrollY = window.scrollY;
+            setScrolled(currentScrollY > 10);
+
+            // --- THE LATENCY MATH ---
+            const velocity = currentScrollY - lastScrollY;
+            
+            // If the island is active, apply rubber-band physics based on scroll speed
+            if (currentScrollY > 10) {
+                // Cap the visual drag between -12px and 12px so it doesn't fly off screen
+                const lagAmount = Math.max(-12, Math.min(12, -velocity * 0.15));
+                setScrollLag(lagAmount);
+            } else {
+                setScrollLag(0);
+            }
+
+            lastScrollY = currentScrollY;
+
+            // When scrolling stops, bounce back to the center (0)
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setScrollLag(0);
+            }, 100); // 100ms after scroll stops
+        };
+
         window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            clearTimeout(timeoutId);
+        };
     }, []);
 
     const close = () => setIsMenuOpen(false);
@@ -110,24 +141,25 @@ export default function Header() {
                 </nav>
             </aside>
 
-            {/* header bar (Compact Dynamic Island Wrapper) */}
-            <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+            
+            <div 
+                className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none transition-transform duration-400ms ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                style={{ transform: `translateY(${scrollLag}px)` }}
+            >
                 <header 
-                    className={`pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    // NEW: Updated to duration-700 with a custom Spring Physics bezier curve
+                    className={`pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
                         scrolled 
-                            // Changed to max-w-lg (shorter width) and kept rounded-[16px]
-                            ? 'mt-5 w-[calc(100%-3.5rem)] max-w-md bg-black/70 backdrop-blur-md border border-white/10 shadow-2xl rounded-[16px]' 
+                            ? 'mt-5 w-[calc(100%-3.5rem)] py-2 max-w-md bg-black/70 backdrop-blur-md border border-white/10 shadow-2xl rounded-3xl' 
                             : 'mt-0 w-full max-w-7xl bg-transparent border-transparent rounded-none'
                     }`}
                 >
-                    <nav className={`relative flex flex-row-reverse w-full items-center justify-between transition-all duration-500 ${
-                        // Changed to h-12 (more compact height) and px-5 (tighter padding)
-                        scrolled ? 'h-15 px-10' : 'h-20 px-6 lg:px-10'
+                    <nav className={`relative flex flex-row-reverse w-full items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                        scrolled ? 'h-14 px-10' : 'h-20 px-6 lg:px-10'
                     }`}>
 
-                        <div className="absolute left-1/2 -translate-x-1/2 transition-transform duration-500">
-                            {/* Adding a slight scale down on scroll to fit the tighter height perfectly */}
-                            <div className={`${scrolled ? 'scale-90' : 'scale-100'} transition-transform duration-500 origin-center`}>
+                        <div className="absolute left-1/2 -translate-x-1/2 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                            <div className={`${scrolled ? 'scale-90' : 'scale-100'} transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-center`}>
                                 <Escape />
                             </div>
                         </div>
@@ -138,8 +170,7 @@ export default function Header() {
                             aria-label="Toggle menu"
                             aria-expanded={isMenuOpen}
                         >
-                            {/* Adjusted text size to match the compact feel */}
-                            <span className={`tracking-wide transition-all duration-500 ${scrolled ? 'text-xs' : 'text-sm'}`}>Menu</span>
+                            <span className={`tracking-wide transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${scrolled ? 'text-xs' : 'text-sm'}`}>Menu</span>
                             <div className={`flex flex-col justify-center ${isMenuOpen ? 'hamburger-open' : ''}`}>
                                 <span className="hamburger-line" />
                                 <span className="hamburger-line" />

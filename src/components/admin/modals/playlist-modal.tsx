@@ -6,7 +6,7 @@ import { ModalWrapper, ModalFooter, Field, FileButton } from './hero-event-modal
 interface PlaylistItem {
   id?: string;
   nama_playlist?: string;
-  youtube_playlist_id?: string; // We will use this for BOTH IDs and Full Links now!
+  youtube_playlist_id?: string;
   category?: string;
   duration?: string;
   deskripsi?: string;
@@ -73,9 +73,9 @@ export default function PlaylistModal({ itemId, onClose, onSaved }: Props) {
         <div className="flex items-center justify-center py-20 text-[#666] text-sm">Loading...</div>
       ) : (
         <div className="flex flex-col gap-6">
-          
+
           {/* Row 1: Nama & Link */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">NAMA PLAYLIST / EPISODE</label>
               <input type="text" value={data.nama_playlist || ''} onChange={e => set('nama_playlist', e.target.value)}
@@ -91,7 +91,7 @@ export default function PlaylistModal({ itemId, onClose, onSaved }: Props) {
           </div>
 
           {/* Row 2: Details */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <label className="text-[#999] text-xs font-semibold tracking-wider uppercase">CATEGORY</label>
               <input type="text" value={data.category || ''} onChange={e => set('category', e.target.value)}
@@ -117,8 +117,8 @@ export default function PlaylistModal({ itemId, onClose, onSaved }: Props) {
           {/* Thumbnail */}
           <div className="flex flex-col gap-3">
             <p className="text-[#999] text-xs font-semibold tracking-wider uppercase">PILIH THUMBNAIL</p>
-            <div className="flex items-start gap-5">
-              <div className="w-36 aspect-square rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10 shrink-0 flex items-center justify-center">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+              <div className="w-full sm:w-36 aspect-square rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10 shrink-0 flex items-center justify-center">
                 {thumbPreview ? (
                   <img src={thumbPreview} alt="" className="w-full h-full object-cover" />
                 ) : (

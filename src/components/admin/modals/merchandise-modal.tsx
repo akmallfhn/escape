@@ -75,8 +75,8 @@ export default function MerchandiseModal({ itemId, onClose, onSaved }: Props) {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <p className="text-[#999] text-xs font-semibold tracking-wider uppercase">Foto</p>
-            <div className="flex items-start gap-5">
-              <div className="w-36 aspect-[3/4] rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10 shrink-0 flex items-center justify-center">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+              <div className="w-full sm:w-36 aspect-3/4 rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10 shrink-0 flex items-center justify-center">
                 {preview ? (
                   <img src={preview} alt="" className="w-full h-full object-cover" />
                 ) : (

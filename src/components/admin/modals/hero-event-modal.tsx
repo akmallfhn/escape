@@ -106,10 +106,10 @@ export default function HeroEventModal({ pageContext, title, onClose, onSaved }:
       {loading ? (
         <div className="flex items-center justify-center py-20 text-[#666] text-sm">Loading...</div>
       ) : (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6 md:gap-8">
           {/* Background Photo */}
           <Section label="BACKGROUND FOTO (1440X900)">
-            <div className="flex items-start gap-5">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
               <ImageThumb src={bgPreview} ratio="aspect-video" />
               <div className="flex flex-col gap-2">
                 <FileButton onClick={() => bgFileRef.current?.click()} />
@@ -120,14 +120,14 @@ export default function HeroEventModal({ pageContext, title, onClose, onSaved }:
             </div>
           </Section>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="TEKS LOGO" value={data.teks_logo || ''} onChange={v => set('teks_logo', v)} />
             <Field label="TEKS JUDUL" value={data.teks_judul || ''} onChange={v => set('teks_judul', v)} />
           </div>
 
           {/* PNG Image */}
           <Section label="PNG IMAGE (OPTIONAL)">
-            <div className="flex items-start gap-5">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
               <ImageThumb src={pngPreview} ratio="aspect-video" />
               <div className="flex flex-col gap-2">
                 <FileButton onClick={() => pngFileRef.current?.click()} />
@@ -140,12 +140,12 @@ export default function HeroEventModal({ pageContext, title, onClose, onSaved }:
 
           <Field label="TEKS DETAIL" value={data.teks_detail || ''} onChange={v => set('teks_detail', v)} placeholder="MINGGU 3 MEI 2025 | BALAI MANUNGGAL" />
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="TEKS BUTTON 1" value={data.button1_text || ''} onChange={v => set('button1_text', v)} placeholder="Buy Ticket" icon="link" />
             <Field label="TEKS BUTTON 2" value={data.button2_text || ''} onChange={v => set('button2_text', v)} placeholder="Check Details" icon="info" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="URL BUTTON 1" value={data.button1_url || ''} onChange={v => set('button1_url', v)} placeholder="https://" icon="link" />
             <Field label="URL BUTTON 2" value={data.button2_url || ''} onChange={v => set('button2_url', v)} placeholder="https://" icon="link" />
           </div>
@@ -160,17 +160,17 @@ export default function HeroEventModal({ pageContext, title, onClose, onSaved }:
 
 export function ModalWrapper({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto py-10 px-4">
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto py-4 sm:py-10 px-3 sm:px-4">
       <div className="relative w-full max-w-3xl bg-[#111] rounded-2xl border border-white/10 flex flex-col">
-        <div className="flex items-center justify-between px-7 py-5 border-b border-white/10">
-          <h2 className="text-white font-bold text-base uppercase tracking-wide">{title}</h2>
-          <button onClick={onClose} className="text-[#666] hover:text-white transition-colors">
+        <div className="flex items-center justify-between px-4 sm:px-7 py-4 sm:py-5 border-b border-white/10 gap-3">
+          <h2 className="text-white font-bold text-sm sm:text-base uppercase tracking-wide leading-tight">{title}</h2>
+          <button onClick={onClose} className="text-[#666] hover:text-white transition-colors shrink-0">
             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
             </svg>
           </button>
         </div>
-        <div className="px-7 py-6 flex-1">{children}</div>
+        <div className="px-4 sm:px-7 py-5 sm:py-6 flex-1">{children}</div>
       </div>
     </div>
   );
@@ -178,11 +178,11 @@ export function ModalWrapper({ title, onClose, children }: { title: string; onCl
 
 export function ModalFooter({ onClose, onSave, saving, disabled }: { onClose: () => void; onSave: () => void; saving: boolean; disabled?: boolean }) {
   return (
-    <div className="flex items-center justify-between pt-8 mt-2 border-t border-white/10">
+    <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 sm:pt-8 mt-2 border-t border-white/10">
       <button
         onClick={onSave}
         disabled={saving || disabled}
-        className="flex items-center gap-2 bg-[#DA393C] text-white font-bold px-7 py-3 rounded-lg text-sm hover:bg-[#b52b2d] active:scale-[0.98] disabled:opacity-40 transition-all uppercase tracking-wider"
+        className="flex items-center justify-center gap-2 bg-[#DA393C] text-white font-bold px-7 py-3 rounded-lg text-sm hover:bg-[#b52b2d] active:scale-[0.98] disabled:opacity-40 transition-all uppercase tracking-wider"
       >
         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" strokeLinecap="round" strokeLinejoin="round" />
@@ -191,7 +191,7 @@ export function ModalFooter({ onClose, onSave, saving, disabled }: { onClose: ()
       </button>
       <button
         onClick={onClose}
-        className="bg-[#2a2a2a] text-white font-bold px-7 py-3 rounded-lg text-sm hover:bg-[#333] transition-colors uppercase tracking-wider"
+        className="bg-[#2a2a2a] text-white font-bold px-7 py-3 rounded-lg text-sm hover:bg-[#333] transition-colors uppercase tracking-wider text-center"
       >
         Cancel
       </button>
@@ -246,7 +246,7 @@ export function Field({
 
 export function ImageThumb({ src, ratio = 'aspect-square' }: { src: string | null; ratio?: string }) {
   return (
-    <div className={`w-32 shrink-0 ${ratio} rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10`}>
+    <div className={`w-full sm:w-32 shrink-0 ${ratio} rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10`}>
       {src ? (
         <img src={src} alt="" className="w-full h-full object-cover" />
       ) : (

@@ -31,6 +31,7 @@ export default function AdminShell() {
   const [merch, setMerch] = useState<MerchItem[]>([]);
   const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && localStorage.getItem('escape_admin_auth') !== 'true') {
@@ -88,18 +89,36 @@ export default function AdminShell() {
     online: 'Online Page',
   };
 
+  const closeMobileSidebar = () => setMobileSidebarOpen(false);
+
   return (
     <div className="flex h-screen bg-[#0c0c0c] text-white overflow-hidden">
 
+      {/* ── Mobile sidebar overlay ─────────────────────────────────────── */}
+      {mobileSidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 md:hidden"
+          onClick={closeMobileSidebar}
+        />
+      )}
+
       {/* ── Sidebar ─────────────────────────────────────────────────────── */}
-      <aside className={`${sidebarCollapsed ? 'w-14' : 'w-60'} shrink-0 flex flex-col bg-[#101010] border-r border-white/8 transition-all duration-200 overflow-hidden`}>
+      <aside className={`
+        fixed md:relative z-50 md:z-auto h-full
+        ${mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+        ${sidebarCollapsed ? 'md:w-14' : 'w-60'}
+        shrink-0 flex flex-col bg-[#101010] border-r border-white/8
+        transition-all duration-200 overflow-hidden
+      `}>
 
         {/* Logo */}
         <div className="flex items-center gap-3 px-4 py-5 border-b border-white/8">
           <div className="shrink-0">
             <LogoIcon width="28" height="28" fill="#DA393C" />
           </div>
-          {!sidebarCollapsed && <span className="text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">Escape Admin</span>}
+          {(!sidebarCollapsed || mobileSidebarOpen) && (
+            <span className="text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">Escape Admin</span>
+          )}
         </div>
 
         {/* Nav */}
@@ -108,12 +127,12 @@ export default function AdminShell() {
             label="Dashboard"
             icon={<IconDashboard />}
             active={activePage === 'dashboard'}
-            collapsed={sidebarCollapsed}
-            onClick={() => setActivePage('dashboard')}
+            collapsed={sidebarCollapsed && !mobileSidebarOpen}
+            onClick={() => { setActivePage('dashboard'); closeMobileSidebar(); }}
             items={[
-              { label: 'Hero Event', onClick: () => { setActivePage('dashboard'); setModal({ type: 'hero-event', ctx: 'dashboard', title: 'UBAH HERO EVENT (DASHBOARD) - ONLINE PAGE' }); } },
-              { label: 'Event Detail Section', onClick: () => { setActivePage('dashboard'); setModal({ type: 'event-detail', title: 'EVENT DETAIL SECTION' }); } },
-              { label: 'Escape Official Merchandise', onClick: () => setActivePage('dashboard') },
+              { label: 'Hero Event', onClick: () => { setActivePage('dashboard'); setModal({ type: 'hero-event', ctx: 'dashboard', title: 'UBAH HERO EVENT (DASHBOARD) - ONLINE PAGE' }); closeMobileSidebar(); } },
+              { label: 'Event Detail Section', onClick: () => { setActivePage('dashboard'); setModal({ type: 'event-detail', title: 'EVENT DETAIL SECTION' }); closeMobileSidebar(); } },
+              { label: 'Escape Official Merchandise', onClick: () => { setActivePage('dashboard'); closeMobileSidebar(); } },
             ]}
           />
           <div className="my-2 border-t border-white/8" />
@@ -121,12 +140,12 @@ export default function AdminShell() {
             label="Online Page"
             icon={<IconOnline />}
             active={activePage === 'online'}
-            collapsed={sidebarCollapsed}
-            onClick={() => setActivePage('online')}
+            collapsed={sidebarCollapsed && !mobileSidebarOpen}
+            onClick={() => { setActivePage('online'); closeMobileSidebar(); }}
             items={[
-              { label: 'Hero Section', onClick: () => { setActivePage('online'); setModal({ type: 'hero-event', ctx: 'online', title: 'UBAH HERO SECTION - ONLINE PAGE' }); } },
-              { label: 'Escape Playlist', onClick: () => setActivePage('online') },
-              { label: 'Promotional Banner', onClick: () => { setActivePage('online'); setModal({ type: 'promo-banner', title: 'PROMOTIONAL BANNER - ONLINE PAGE' }); } },
+              { label: 'Hero Section', onClick: () => { setActivePage('online'); setModal({ type: 'hero-event', ctx: 'online', title: 'UBAH HERO SECTION - ONLINE PAGE' }); closeMobileSidebar(); } },
+              { label: 'Escape Playlist', onClick: () => { setActivePage('online'); closeMobileSidebar(); } },
+              { label: 'Promotional Banner', onClick: () => { setActivePage('online'); setModal({ type: 'promo-banner', title: 'PROMOTIONAL BANNER - ONLINE PAGE' }); closeMobileSidebar(); } },
             ]}
           />
         </nav>
@@ -135,7 +154,7 @@ export default function AdminShell() {
         <div className="border-t border-white/8 px-2 py-3 flex flex-col gap-1">
           <button
             onClick={() => setSidebarCollapsed(p => !p)}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#666] hover:text-white hover:bg-white/5 transition-colors text-sm w-full"
+            className="hidden md:flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#666] hover:text-white hover:bg-white/5 transition-colors text-sm w-full"
           >
             <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
               {sidebarCollapsed
@@ -152,9 +171,9 @@ export default function AdminShell() {
             <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
               <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            {!sidebarCollapsed && <span>Sign Out</span>}
+            {(!sidebarCollapsed || mobileSidebarOpen) && <span>Sign Out</span>}
           </button>
-          {!sidebarCollapsed && (
+          {(!sidebarCollapsed || mobileSidebarOpen) && (
             <div className="flex items-center gap-3 px-3 py-3 mt-1 border-t border-white/8">
               <div className="w-7 h-7 rounded-full bg-[#DA393C] flex items-center justify-center shrink-0">
                 <LogoIcon width="14" height="14" fill="white" />
@@ -169,21 +188,35 @@ export default function AdminShell() {
       </aside>
 
       {/* ── Main Content ─────────────────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
 
         {/* Top bar */}
-        <div className="flex items-center justify-between px-8 py-4 border-b border-white/8 bg-[#0e0e0e] shrink-0">
-          <h1 className="text-lg font-bold text-white">{pageTitles[activePage]}</h1>
+        <div className="flex items-center justify-between px-4 md:px-8 py-3 md:py-4 border-b border-white/8 bg-[#0e0e0e] shrink-0 gap-3">
+          <div className="flex items-center gap-3">
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileSidebarOpen(p => !p)}
+              className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg text-[#888] hover:text-white hover:bg-white/5 transition-colors shrink-0"
+            >
+              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+            <h1 className="text-base md:text-lg font-bold text-white">{pageTitles[activePage]}</h1>
+          </div>
           <button
             onClick={() => showToast('Semua perubahan sudah tersimpan di Supabase!')}
-            className="bg-[#DA393C] text-white text-xs font-bold px-6 py-2.5 rounded-lg hover:bg-[#b52b2d] active:scale-[0.98] transition-all uppercase tracking-widest"
+            className="bg-[#DA393C] text-white text-xs font-bold px-4 md:px-6 py-2 md:py-2.5 rounded-lg hover:bg-[#b52b2d] active:scale-[0.98] transition-all uppercase tracking-widest whitespace-nowrap"
           >
-            Launch Update
+            <span className="hidden sm:inline">Launch Update</span>
+            <span className="sm:hidden">Update</span>
           </button>
         </div>
 
         {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto px-8 py-8">
+        <div className="flex-1 overflow-y-auto px-4 md:px-8 py-5 md:py-8">
           {activePage === 'dashboard' && (
             <DashboardView
               merch={merch}
@@ -194,7 +227,7 @@ export default function AdminShell() {
               onDeleteMerch={deleteMerch}
             />
           )}
-          
+
           {activePage === 'online' && (
             <OnlineView
               playlist={playlist}
@@ -246,7 +279,7 @@ export default function AdminShell() {
 
       {/* ── Toast ──────────────────────────────────────────────────────── */}
       {toast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#1a1a1a] border border-white/15 text-white text-sm px-5 py-3 rounded-xl shadow-2xl z-[200] flex items-center gap-3 animate-fade-in">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#1a1a1a] border border-white/15 text-white text-sm px-5 py-3 rounded-xl shadow-2xl z-200 flex items-center gap-3 animate-fade-in whitespace-nowrap">
           <svg width="16" height="16" fill="none" stroke="#4ade80" strokeWidth="2.5" viewBox="0 0 24 24">
             <polyline points="20 6 9 17 4 12" />
           </svg>
@@ -303,10 +336,10 @@ function DashboardView({ merch, onEditHero, onEditEventDetail, onEditMerch, onAd
   onDeleteMerch: (id: string) => void;
 }) {
   return (
-    <div className="flex flex-col gap-12 max-w-4xl">
+    <div className="flex flex-col gap-8 md:gap-12 max-w-4xl">
       <SectionBlock title="Hero Event Section">
         <PreviewCard onClick={onEditHero}>
-          <div className="w-full h-40 bg-gradient-to-br from-[#2a1a1a] to-[#1a1010] rounded-xl flex items-center justify-center relative overflow-hidden border border-white/8">
+          <div className="w-full h-32 md:h-40 bg-linear-to-br from-[#2a1a1a] to-[#1a1010] rounded-xl flex items-center justify-center relative overflow-hidden border border-white/8">
             <div className="absolute inset-0 opacity-30 bg-[url('/images/hero3.png')] bg-cover bg-center" />
             <div className="relative z-10 flex flex-col items-center gap-1">
               <span className="text-xs text-[#999] uppercase tracking-widest">Background 1440x900</span>
@@ -319,8 +352,8 @@ function DashboardView({ merch, onEditHero, onEditEventDetail, onEditMerch, onAd
 
       <SectionBlock title="Event Detail Section - Link to other page">
         <PreviewCard onClick={onEditEventDetail}>
-          <div className="flex gap-6 p-4 bg-[#111] rounded-xl border border-white/8">
-            <div className="w-28 aspect-square bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 bg-[#111] rounded-xl border border-white/8">
+            <div className="w-full sm:w-28 h-28 sm:aspect-square bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
               <span className="text-[#444] text-xs">Poster</span>
             </div>
             <div className="flex flex-col gap-2 pt-1">
@@ -341,7 +374,7 @@ function DashboardView({ merch, onEditHero, onEditEventDetail, onEditMerch, onAd
         title="Escape Official Merchandise Section"
         action={<AddButton onClick={onAddMerch} label="Tambah Item" />}
       >
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {merch.map(item => (
             <MerchCard key={item.id} item={item}
               onEdit={() => onEditMerch(item.id)}
@@ -349,7 +382,7 @@ function DashboardView({ merch, onEditHero, onEditEventDetail, onEditMerch, onAd
             />
           ))}
           {merch.length === 0 && (
-            <div className="col-span-3 text-center py-12 text-[#444] text-sm border border-dashed border-white/10 rounded-xl">
+            <div className="col-span-2 sm:col-span-3 text-center py-12 text-[#444] text-sm border border-dashed border-white/10 rounded-xl">
               Belum ada item. Klik "Tambah Item" untuk menambah.
             </div>
           )}
@@ -368,10 +401,10 @@ function OnlineView({ playlist, onEditHero, onEditPlaylist, onAddPlaylist, onDel
   onEditBanner: () => void;
 }) {
   return (
-    <div className="flex flex-col gap-12 max-w-4xl">
+    <div className="flex flex-col gap-8 md:gap-12 max-w-4xl">
       <SectionBlock title="Hero Section">
         <PreviewCard onClick={onEditHero}>
-          <div className="w-full h-44 bg-gradient-to-br from-[#1a1010] to-[#0c0c0c] rounded-xl flex items-center justify-center relative overflow-hidden border border-white/8">
+          <div className="w-full h-36 md:h-44 bg-linear-to-br from-[#1a1010] to-[#0c0c0c] rounded-xl flex items-center justify-center relative overflow-hidden border border-white/8">
             <div className="absolute inset-0 opacity-25 bg-[url('/images/hero2.png')] bg-cover bg-center" />
             <div className="relative z-10 text-center">
               <p className="text-xs text-[#999] uppercase tracking-widest mb-2">escape</p>
@@ -404,8 +437,8 @@ function OnlineView({ playlist, onEditHero, onEditPlaylist, onAddPlaylist, onDel
 
       <SectionBlock title="Promotional Banner">
         <PreviewCard onClick={onEditBanner}>
-          <div className="flex gap-5 p-4 bg-[#0f1a10] rounded-xl border border-white/8">
-            <div className="w-28 aspect-[3/4] bg-[#1a2a1a] rounded-lg shrink-0 flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 p-4 bg-[#0f1a10] rounded-xl border border-white/8">
+            <div className="w-full sm:w-28 h-28 sm:aspect-3/4 bg-[#1a2a1a] rounded-lg shrink-0 flex items-center justify-center">
               <span className="text-[#2a4a2a] text-xs font-bold">3:4</span>
             </div>
             <div className="flex flex-col gap-2 pt-1 justify-center">
@@ -426,8 +459,8 @@ function OnlineView({ playlist, onEditHero, onEditPlaylist, onAddPlaylist, onDel
 function SectionBlock({ title, children, action }: { title: string; children: React.ReactNode; action?: React.ReactNode }) {
   return (
     <div>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-white font-semibold text-sm uppercase tracking-wider">{title}</h2>
+      <div className="flex items-center justify-between mb-4 gap-2">
+        <h2 className="text-white font-semibold text-xs sm:text-sm uppercase tracking-wider leading-tight">{title}</h2>
         {action}
       </div>
       {children}
@@ -460,7 +493,7 @@ function EditBadge() {
 function AddButton({ onClick, label }: { onClick: () => void; label: string }) {
   return (
     <button onClick={onClick}
-      className="flex items-center gap-1.5 text-xs text-[#DA393C] border border-[#DA393C]/40 px-3 py-1.5 rounded-lg hover:bg-[#DA393C]/10 transition-colors">
+      className="flex items-center gap-1.5 text-xs text-[#DA393C] border border-[#DA393C]/40 px-3 py-1.5 rounded-lg hover:bg-[#DA393C]/10 transition-colors whitespace-nowrap shrink-0">
       <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
         <line x1="12" y1="5" x2="12" y2="19" />
         <line x1="5" y1="12" x2="19" y2="12" />
@@ -473,7 +506,7 @@ function AddButton({ onClick, label }: { onClick: () => void; label: string }) {
 function MerchCard({ item, onEdit, onDelete }: { item: MerchItem; onEdit: () => void; onDelete: () => void }) {
   return (
     <div className="group flex flex-col gap-2 bg-[#111] border border-white/8 rounded-xl overflow-hidden hover:border-white/15 transition-colors">
-      <div className="aspect-[3/4] bg-white/5 overflow-hidden">
+      <div className="aspect-3/4 bg-white/5 overflow-hidden">
         {item.foto_url
           ? <img src={item.foto_url} alt="" className="w-full h-full object-cover" />
           : <div className="w-full h-full flex items-center justify-center text-[#333]"><IconImage /></div>
@@ -499,8 +532,8 @@ function MerchCard({ item, onEdit, onDelete }: { item: MerchItem; onEdit: () => 
 
 function PlaylistCard({ item, onEdit, onDelete }: { item: PlaylistItem; onEdit: () => void; onDelete: () => void }) {
   return (
-    <div className="group flex items-center gap-4 bg-[#111] border border-white/8 rounded-xl p-4 hover:border-white/15 transition-colors">
-      <div className="w-16 h-16 bg-white/5 rounded-xl overflow-hidden shrink-0">
+    <div className="group flex items-center gap-3 md:gap-4 bg-[#111] border border-white/8 rounded-xl p-3 md:p-4 hover:border-white/15 transition-colors">
+      <div className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-xl overflow-hidden shrink-0">
         {item.thumbnail_url
           ? <img src={item.thumbnail_url} alt="" className="w-full h-full object-cover" />
           : <div className="w-full h-full flex items-center justify-center text-[#333]"><IconImage /></div>
@@ -511,8 +544,8 @@ function PlaylistCard({ item, onEdit, onDelete }: { item: PlaylistItem; onEdit: 
         <p className="text-[#555] text-xs mt-0.5">{item.category || '-'} • {item.duration || '-'}</p>
       </div>
       <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
-        <button onClick={onEdit} className="bg-white/8 hover:bg-white/12 text-white text-xs px-3 py-1.5 rounded-lg transition-colors">Edit</button>
-        <button onClick={onDelete} className="bg-red-900/30 hover:bg-red-900/50 text-red-400 text-xs px-2.5 py-1.5 rounded-lg transition-colors">
+        <button onClick={onEdit} className="bg-white/8 hover:bg-white/12 text-white text-xs px-2.5 md:px-3 py-1.5 rounded-lg transition-colors">Edit</button>
+        <button onClick={onDelete} className="bg-red-900/30 hover:bg-red-900/50 text-red-400 text-xs px-2 md:px-2.5 py-1.5 rounded-lg transition-colors">
           <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14H6L5 6" strokeLinecap="round" />
           </svg>

@@ -21,7 +21,7 @@ export default async function Hero() {
         className="invisible absolute"
         aria-hidden
       />
-      <div className="relative mx-auto flex max-w-7xl flex-col">
+      <div className="relative mx-auto flex w-full flex-col">
         <div className="relative w-full mb-10 aspect-3/4 sm:aspect-4/3 md:aspect-1440/900">
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"

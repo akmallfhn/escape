@@ -48,7 +48,7 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-[#0c0c0c] flex items-center justify-center px-4">
-      <div className="w-full max-w-[360px]">
+      <div className="w-full max-w-90">
         <div className="flex flex-col items-center gap-5 mb-10">
           <div className="flex items-center gap-3">
             <LogoIcon width="36" height="36" fill="white" />

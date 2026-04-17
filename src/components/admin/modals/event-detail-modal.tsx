@@ -88,12 +88,12 @@ export default function EventDetailModal({ onClose, onSaved }: Props) {
       {loading ? (
         <div className="flex items-center justify-center py-20 text-[#666] text-sm">Loading...</div>
       ) : (
-        <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-6 md:gap-7">
           {/* Poster */}
           <div className="flex flex-col gap-3">
             <p className="text-[#999] text-xs font-semibold tracking-wider uppercase">POSTER EVENT</p>
-            <div className="flex items-start gap-5">
-              <div className="w-40 aspect-square rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10 shrink-0">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+              <div className="w-full sm:w-40 aspect-square rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10 shrink-0">
                 {posterPreview ? (
                   <img src={posterPreview} alt="" className="w-full h-full object-cover" />
                 ) : (
@@ -129,17 +129,17 @@ export default function EventDetailModal({ onClose, onSaved }: Props) {
 
           <Field label="DESKRIPSI" value={data.deskripsi || ''} onChange={v => set('deskripsi', v)} multiline placeholder="Deskripsi event..." />
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="LOKASI" value={data.lokasi || ''} onChange={v => set('lokasi', v)} icon="link" placeholder="Balai Manunggal (Balai M Yusuf)" />
             <Field label="TANGGAL" value={data.tanggal || ''} onChange={v => set('tanggal', v)} placeholder="Sunday, 3 Mei 2025" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="WAKTU" value={data.waktu || ''} onChange={v => set('waktu', v)} placeholder="13:00-17:00 WITA" />
             <Field label="KAPASITAS" value={data.kapasitas || ''} onChange={v => set('kapasitas', v)} placeholder="1000+" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="TEKS BUTTON" value={data.teks_button || ''} onChange={v => set('teks_button', v)} icon="link" placeholder="Buy Ticket" />
             <Field label="URL BUTTON" value={data.url_button || ''} onChange={v => set('url_button', v)} icon="link" placeholder="https://" />
           </div>

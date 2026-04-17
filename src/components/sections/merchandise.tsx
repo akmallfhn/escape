@@ -30,7 +30,7 @@ export default async function MerchandiseSection() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:gap-8">
           {products.map((product: any) => (
             <div key={product.id} className="flex flex-col group">
-              <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center aspect-[3/4] p-6">
+              <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center aspect-3/4 p-6">
                 {product.foto_url ? (
                   <Image
                     src={product.foto_url}

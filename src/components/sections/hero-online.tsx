@@ -23,7 +23,7 @@ export default async function OnlineHero() {
           priority
           className="object-cover object-top"
         />
-        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-linear-to-t from-black to-transparent" />
 
         {/* Desktop/tablet only content overlay */}
         <div className="hidden md:block absolute bottom-0 left-0 right-0 z-10 pb-10 lg:pb-16">

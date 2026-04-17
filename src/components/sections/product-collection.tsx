@@ -28,7 +28,7 @@ const STATIC_DATA: Record<number, any[]> = {
 function ProductCard({ product }: { product: any }) {
     return (
         <div className="flex flex-col gap-3 group cursor-pointer">
-            <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center p-4 sm:p-8 aspect-[4/5]">
+            <div className="overflow-hidden rounded-2xl bg-white flex items-center justify-center p-4 sm:p-8 aspect-4/5">
                 <Image
                     src={product.foto_url}
                     alt={product.nama_produk || ''}
