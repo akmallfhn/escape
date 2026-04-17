@@ -62,7 +62,7 @@ export default function CollabSection() {
 
     return (
         <section className="bg-black py-12 sm:py-16 md:py-20 lg:py-24">
-            <div className="mx-auto w-full max-w-7xl">
+            <div className="mx-auto w-full">
 
                 {/* Section Title */}
                 <div className="mb-8 text-center sm:mb-10 md:mb-12">
@@ -90,8 +90,8 @@ export default function CollabSection() {
                                 src={collab.image}
                                 alt=""
                                 className="h-full w-full object-cover"
-                                width={200}
-                                height={200}
+                                width={400}
+                                height={400}
                             />
                         </div>
                     ))}

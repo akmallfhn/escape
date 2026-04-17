@@ -76,7 +76,7 @@ export default function TimelineSection() {
                     <div className="flex-1">
                         <div className="relative">
                             {/* vertical line */}
-                            <div className="absolute top-0 bottom-0 left-[19px] w-px bg-white/20" />
+                            <div className="absolute top-0 bottom-0 left-4.75 w-px bg-white/20" />
 
                             <div className="flex flex-col gap-10">
                                 {timelineData.map((item, i) => (
