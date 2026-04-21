@@ -11,11 +11,12 @@ export default async function HeroVideo() {
 
   return (
     <section className="relative w-full overflow-hidden bg-black h-[75vh] sm:h-[80vh] md:aspect-video md:h-auto">
-      {/* YouTube background — desktop/tablet */}
+      {/* YouTube background */}
       {!bgUrl && (
-        <div className="hidden md:block absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <iframe
-            className="absolute inset-0 w-full h-full object-cover"
+            // THIS IS THE MAGIC MATH TRICK FOR YOUTUBE COVERS
+            className="absolute top-1/2 left-1/2 w-[max(100vw,177.77vh)] h-[max(56.25vw,100vh)] -translate-x-1/2 -translate-y-1/2"
             src="https://www.youtube-nocookie.com/embed/HeU0S4LOaWs?autoplay=1&mute=1&loop=1&playlist=HeU0S4LOaWs&controls=0&disablekb=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&start=0&end=40"
             title=""
             frameBorder="0"
@@ -28,19 +29,6 @@ export default async function HeroVideo() {
       {bgUrl && (
         <div className="absolute inset-0">
           <Image src={bgUrl} alt="" fill priority className="object-cover" />
-        </div>
-      )}
-
-      {/* Static poster image — mobile fallback */}
-      {!bgUrl && (
-        <div className="md:hidden absolute inset-0">
-          <Image
-            src="/images/hero-poster.png"
-            alt=""
-            fill
-            priority
-            className="object-cover"
-          />
         </div>
       )}
 
