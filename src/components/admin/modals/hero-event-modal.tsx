@@ -70,12 +70,19 @@ export default function HeroEventModal({ pageContext, title, onClose, onSaved }:
     let bgUrl = data.background_photo_url;
     let pngUrl = data.png_image_url;
 
+    // #region agent log
+    fetch('http://127.0.0.1:7548/ingest/f47f1155-2844-43ad-8e8f-d9546d6292a2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a52df5'},body:JSON.stringify({sessionId:'a52df5',hypothesisId:'B,C',location:'hero-event-modal.tsx:handleSave-entry',message:'save started',data:{pageContext,hasPngFile:!!pngFile,pngFileName:pngFile?.name,pngFileSize:pngFile?.size,existingPngUrl:data.png_image_url||null},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+
     if (bgFile) {
       const url = await uploadToStorage(bgFile, 'hero');
       if (url) bgUrl = url;
     }
     if (pngFile) {
       const url = await uploadToStorage(pngFile, 'hero');
+      // #region agent log
+      fetch('http://127.0.0.1:7548/ingest/f47f1155-2844-43ad-8e8f-d9546d6292a2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a52df5'},body:JSON.stringify({sessionId:'a52df5',hypothesisId:'B',location:'hero-event-modal.tsx:png-upload',message:'png upload result',data:{uploadedUrl:url},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
       if (url) pngUrl = url;
     }
 
@@ -88,6 +95,10 @@ export default function HeroEventModal({ pageContext, title, onClose, onSaved }:
     const { error } = await supabase
       .from('hero_event_data')
       .upsert(payload, { onConflict: 'page_context' });
+
+    // #region agent log
+    fetch('http://127.0.0.1:7548/ingest/f47f1155-2844-43ad-8e8f-d9546d6292a2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a52df5'},body:JSON.stringify({sessionId:'a52df5',hypothesisId:'C',location:'hero-event-modal.tsx:upsert-done',message:'upsert finished',data:{pageContext:payload.page_context,savedPngUrl:payload.png_image_url||null,error:error?.message||null},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
 
     setSaving(false);
     if (!error) {

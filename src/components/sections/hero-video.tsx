@@ -4,6 +4,10 @@ import { getHeroEventData } from "@/lib/supabase-server";
 export default async function HeroVideo() {
   const data = await getHeroEventData('offline');
 
+  // #region agent log
+  fetch('http://127.0.0.1:7548/ingest/f47f1155-2844-43ad-8e8f-d9546d6292a2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a52df5'},body:JSON.stringify({sessionId:'a52df5',hypothesisId:'A,D',location:'hero-video.tsx:render',message:'offline hero rendered',data:{pngImageUrlFromDb:data?.png_image_url||null,rowFound:!!data},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
+
   const bgUrl = data?.background_photo_url || null;
   const pngUrl = data?.png_image_url || '/images/escape-room.png';
   const button1Text = data?.button1_text || 'Buy Ticket';

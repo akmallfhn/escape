@@ -5,7 +5,12 @@ import { getHeroEventData } from "@/lib/supabase-server";
 export default async function Hero() {
   const data = await getHeroEventData('dashboard');
 
+  // #region agent log
+  fetch('http://127.0.0.1:7548/ingest/f47f1155-2844-43ad-8e8f-d9546d6292a2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a52df5'},body:JSON.stringify({sessionId:'a52df5',hypothesisId:'A,D',location:'hero.tsx:render',message:'dashboard hero rendered',data:{pngImageUrlFromDb:data?.png_image_url||null,bgUrlFromDb:data?.background_photo_url||null,note:'this component never renders png_image_url'},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
+
   const bgUrl = data?.background_photo_url || '/images/hero3.png';
+  const pngUrl = data?.png_image_url || null;
   const button1Text = data?.button1_text || 'Buy Ticket';
   const button1Url = data?.button1_url || 'https://drsn.me/escapemakassar2026';
   const button2Text = data?.button2_text || 'Check Details';
@@ -28,6 +33,16 @@ export default async function Hero() {
             style={{ backgroundImage: `url('${bgUrl}')` }}
           />
           <div className="relative z-10 flex h-full flex-col items-center justify-end lg:pb-6">
+            {pngUrl && (
+              <Image
+                src={pngUrl}
+                alt=""
+                width={400}
+                height={200}
+                priority
+                className="mb-4 w-48 object-contain sm:w-64 md:w-80 lg:w-100"
+              />
+            )}
             <div className="flex gap-4">
               <a
                 href={button1Url}
