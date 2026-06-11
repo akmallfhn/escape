@@ -1,15 +1,15 @@
 import Image from "next/image";
 import { InfiniteScrollGallery } from "../ui/infinite-gallery";
-import { getHeroEventData } from "@/lib/supabase-server";
+import { getHeroEventData, getEventDetailData } from "@/lib/supabase-server";
 
 export default async function Hero() {
-  const data = await getHeroEventData('dashboard');
-
-  // #region agent log
-  fetch('http://127.0.0.1:7548/ingest/f47f1155-2844-43ad-8e8f-d9546d6292a2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'a52df5'},body:JSON.stringify({sessionId:'a52df5',hypothesisId:'A,D',location:'hero.tsx:render',message:'dashboard hero rendered',data:{pngImageUrlFromDb:data?.png_image_url||null,bgUrlFromDb:data?.background_photo_url||null,note:'this component never renders png_image_url'},timestamp:Date.now()})}).catch(()=>{});
-  // #endregion
+  const [data, eventDetail] = await Promise.all([
+    getHeroEventData('dashboard'),
+    getEventDetailData(),
+  ]);
 
   const bgUrl = data?.background_photo_url || '/images/hero3.png';
+  const mobileBgUrl = eventDetail?.poster_event_url || bgUrl;
   const pngUrl = data?.png_image_url || null;
   const button1Text = data?.button1_text || 'Buy Ticket';
   const button1Url = data?.button1_url || 'https://drsn.me/escapemakassar2026';
@@ -28,8 +28,14 @@ export default async function Hero() {
       />
       <div className="relative mx-auto flex w-full flex-col">
         <div className="relative w-full mb-10 aspect-3/4 sm:aspect-4/3 md:aspect-1440/900">
+          {/* Mobile: event detail poster as background */}
           <div
-            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat sm:hidden"
+            style={{ backgroundImage: `url('${mobileBgUrl}')` }}
+          />
+          {/* Tablet/desktop: hero background photo */}
+          <div
+            className="absolute inset-0 z-0 hidden bg-cover bg-center bg-no-repeat sm:block"
             style={{ backgroundImage: `url('${bgUrl}')` }}
           />
           <div className="relative z-10 flex h-full flex-col items-center justify-end lg:pb-6">
